@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ThemeOptionFront extends Model
 {
-     use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-     protected $table = 'theme_option_front'; 
+    protected $table = 'theme_option_front'; 
 
-     protected $fillable = [
+    protected $fillable = [
         'option_name', 
         'option_value', 
         'option_image'
     ];
-
 }
