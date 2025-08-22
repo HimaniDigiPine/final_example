@@ -353,21 +353,17 @@
             </li>
 
             <!-- Setting Menu Start-->
-           <!-- <li>
+            <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="material-icons-outlined">build</i>
                     </div>
                     <div class="menu-title">Setting</div>
                 </a>
                 <ul>
-                    <li><a href=""><i class="material-icons-outlined">arrow_right</i>Options</a>
-                    </li>
-                    <li><a href=""><i class="material-icons-outlined">arrow_right</i>Logo</a>
-                    </li>
-                    <li><a href="#"><i class="material-icons-outlined">arrow_right</i>Contact Details</a>
+                    <li><a href="{{ route('admin.theme_option_front.index') }}"><i class="material-icons-outlined">arrow_right</i>Options</a>
                     </li>
                 </ul>
-            </li> -->
+            </li>
             <!-- Setting Menu End -->
 
         </ul>

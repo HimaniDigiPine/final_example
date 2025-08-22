@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ThemeOptionFrontController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +27,17 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/profile/change-password', [ProfileController::class, 'editPassword'])->name('admin.profile.password.edit');
     Route::post('/profile/change-password', [ProfileController::class, 'updatePassword'])->name('admin.profile.password.update');
 });
+
+//Admin Theme Option Front Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    Route::resource('theme_option_front', ThemeOptionFrontController::class);
+    // Restore and Force Delete
+    Route::post('theme-option-front/restore/{id}', [ThemeOptionFrontController::class, 'restore'])
+        ->name('theme_option_front.restore');
+    Route::delete('theme-option-front/force-delete/{id}', [ThemeOptionFrontController::class, 'forceDelete'])
+        ->name('theme_option_front.forceDelete');
+    // Bulk Delete
+    Route::delete('theme-option-front/bulk-delete', [ThemeOptionFrontController::class, 'bulkDelete'])
+        ->name('theme_option_front.bulkDelete');
+});
+
