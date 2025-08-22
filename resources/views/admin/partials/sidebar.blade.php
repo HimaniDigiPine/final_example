@@ -352,6 +352,23 @@
                 </a>
             </li>
 
+            <!-- Blog Menu Start-->
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="material-icons-outlined">article</i>
+                    </div>
+                    <div class="menu-title">Blog</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.blog-categories.index') }}"><i class="material-icons-outlined">category</i>Blog Category</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="{{ route('admin.blog.index') }}"><i class="material-icons-outlined">article</i>Blog</a></li>
+                </ul>
+            </li>
+            <!-- Blog Menu End -->
+
             <!-- Setting Menu Start-->
             <li>
                 <a href="javascript:;" class="has-arrow">

@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ThemeOptionFrontController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,12 +35,31 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::resource('theme_option_front', ThemeOptionFrontController::class);
     // Restore and Force Delete
-    Route::post('theme-option-front/restore/{id}', [ThemeOptionFrontController::class, 'restore'])
-        ->name('theme_option_front.restore');
-    Route::delete('theme-option-front/force-delete/{id}', [ThemeOptionFrontController::class, 'forceDelete'])
-        ->name('theme_option_front.forceDelete');
+    Route::post('theme-option-front/restore/{id}', [ThemeOptionFrontController::class, 'restore'])->name('theme_option_front.restore');
+    Route::delete('theme-option-front/force-delete/{id}', [ThemeOptionFrontController::class, 'forceDelete'])->name('theme_option_front.forceDelete');
     // Bulk Delete
-    Route::delete('theme-option-front/bulk-delete', [ThemeOptionFrontController::class, 'bulkDelete'])
-        ->name('theme_option_front.bulkDelete');
+    Route::delete('theme-option-front/bulk-delete', [ThemeOptionFrontController::class, 'bulkDelete'])->name('theme_option_front.bulkDelete');
+});
+
+// Admin Blog Category Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Resource CRUD routes
+    Route::resource('blog-categories', BlogCategoryController::class);
+    // Restore and Force Delete
+    Route::post('blog-categories/restore/{id}', [BlogCategoryController::class, 'restore'])->name('blog-categories.restore');
+    Route::delete('blog-categories/force-delete/{id}', [BlogCategoryController::class, 'forceDelete']) ->name('blog-categories.forceDelete');
+    // Bulk Delete
+    Route::delete('blog-categories/bulk-delete', [BlogCategoryController::class, 'bulkDelete']) ->name('blog-categories.bulkDelete');
+});
+
+// Admin Blog Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Resource CRUD routes
+    Route::resource('blog', BlogController::class);
+    // Restore and Force Delete
+    Route::post('blog/restore/{id}', [BlogController::class,'restore'])->name('blog.restore');
+    Route::delete('blog/force-delete/{id}', [BlogController::class,'forceDelete'])->name('blog.forceDelete');
+    // Bulk Delete
+    Route::delete('blog/bulk-delete', [BlogController::class, 'bulkDelete'])->name('blog.bulkDelete');
 });
 
