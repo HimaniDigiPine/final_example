@@ -8,18 +8,18 @@
 
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Blogs</div>
+            <div class="breadcrumb-title pe-3">Services</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Add Blog</li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Service</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.blog.index') }}" class="btn btn-warning px-4 raised d-flex gap-2">
+                    <a href="{{ route('admin.services.index') }}" class="btn btn-warning px-4 raised d-flex gap-2">
                         <i class="material-icons-outlined">arrow_back</i>
                         Back
                     </a>
@@ -34,31 +34,37 @@
                 <hr>
                 <div class="card">
                     <div class="card-body p-4">
-                        <h5 class="mb-4">Add Blog</h5>
-                        <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data" class="row g-3" id="blogAddForm">
+                        <h5 class="mb-4">Services Insert</h5>
+                        <form action="{{ route('admin.services.update', $service->id) }}" method="POST" enctype="multipart/form-data" class="row g-3" id="serviceEditForm">
                             @csrf
-
-                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-
+                            @method('PUT')
                             <div class="col-md-12">
-                                <label for="blog_name" class="form-label">Blog Title</label>
+                                <label for="park" class="form-label">Service Name</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">title</i></span>
-                                    <input type="text" class="form-control" id="blog_name" placeholder="Blog Title" name="blog_name">
+                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">park</i></span>
+                                    <input type="text" class="form-control" id="service_name" placeholder="Service Name" name="service_name" value="{{ old('service_name', $service->service_name) }}">
                                 </div>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="blog_category_id" class="form-label">Blog Category</label>
+                                <label for="service_description" class="form-label">Service Description</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">category</i></span>
-                                    <select name="blog_category_id" id="blog_category_id" class="form-control">
-                                        <option value="">Select Category</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">description</i></span>
+                                    <textarea class="form-control" id="service_description" name="service_description" placeholder="Service Description" rows="4">{{ old('service_description', $service->service_description) }}</textarea>
                                 </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="service_image" class="form-label">Service Icon</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">image</i></span>
+                                    <input type="file" name="service_image" class="form-control" id="service_image">
+                                </div>
+                                 @if($service->service_image)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('uploads/services/icon/'.$service->service_image) }}" alt="Feature Image" width="120">
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="col-md-12">
@@ -67,21 +73,18 @@
                                     <span class="input-group-text"><i class="material-icons-outlined fs-5">image</i></span>
                                     <input type="file" name="feature_image" class="form-control" id="feature_image">
                                 </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="blog_description" class="form-label">Blog Description</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">description</i></span>
-                                    <textarea class="form-control" id="blog_description" name="blog_description" placeholder="Write blog here..." rows="6"></textarea>
-                                </div>
+                                 @if($service->feature_image)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('uploads/services/feature/'.$service->feature_image) }}" alt="Feature Image" width="120">
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="col-md-12">
                                 <div class="d-md-flex d-grid align-items-center gap-3 mt-3">
-                                    <button type="submit" class="btn btn-primary px-4 d-flex align-items-center">
-                                        <i class="material-icons-outlined me-2" style="font-size:18px;">add</i>
-                                        <span>Insert</span>
+                                    <button type="submit" class="btn btn-info px-4 d-flex align-items-center">
+                                        <i class="material-icons-outlined me-2" style="font-size:18px;">update</i>
+                                        <span>Update</span>
                                     </button>
 
                                     <button type="reset" class="btn btn-secondary px-4 d-flex align-items-center">
@@ -100,7 +103,7 @@
 
     </div>
 </main>
-<!--end main wrapper-->
+<!--end main wrapper--> 
 
 @endsection
 
@@ -112,33 +115,31 @@
 <script>
 $(document).ready(function () {
 
-    $('#blog_description').summernote({
+    $('#service_description').summernote({
         height: 250
     });
 
-    $("#blogAddForm").validate({
+    $("#serviceEditForm").validate({
         rules: {
-            blog_name: { 
+            service_name: { 
                 required: true, 
                 minlength: 2 
             },
-            blog_category_id: { 
-                required: true 
+            service_image: { 
+                extension: "jpg|jpeg|png|gif" 
             },
             feature_image: { 
-                required: true, 
                 extension: "jpg|jpeg|png|gif" 
             }
         },
-        messages: {
-            blog_name: { 
-                required: "Please enter blog title" 
+        messages:{
+            service_name: { 
+                required: "Please enter Service Title" 
             },
-            blog_category_id: { 
-                required: "Please select blog category" 
+            service_image: { 
+                extension: "Only JPG, JPEG, PNG, or GIF files are allowed" 
             },
-            feature_image: { 
-                required: "Please select a feature image", 
+            feature_image: {  
                 extension: "Only JPG, JPEG, PNG, or GIF files are allowed" 
             }
         },
@@ -171,9 +172,9 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: response.message || "Blog Added Successfully!"
+                        text: response.message || "Services Updated Successfully!"
                     }).then(() => {
-                        window.location.href = response.redirect || "{{ route('admin.blog.index') }}";
+                        window.location.href = response.redirect || "{{ route('admin.services.index') }}";
                     });
                 },
                 error: function (xhr) {
@@ -188,6 +189,7 @@ $(document).ready(function () {
         }
     });
 
-});
+});    
 </script>
+
 @endpush

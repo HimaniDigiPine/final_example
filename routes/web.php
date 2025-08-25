@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ThemeOptionFrontController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ServiceController;
 
 
 Route::get('/', function () {
@@ -63,3 +64,15 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::delete('blog/bulk-delete', [BlogController::class, 'bulkDelete'])->name('blog.bulkDelete');
 });
 
+// Admin Service Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Resource CRUD routes
+    Route::resource('services', ServiceController::class);
+    // Restore and Force Delete
+    Route::post('services/restore/{id}', [ServiceController::class,'restore'])->name('services.restore');
+    Route::delete('services/force-delete/{id}', [ServiceController::class,'forceDelete'])->name('services.forceDelete');
+    // Bulk Delete
+    Route::delete('services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulkDelete');
+
+});
+ 
