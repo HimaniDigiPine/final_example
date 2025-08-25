@@ -352,6 +352,20 @@
                 </a>
             </li>
 
+            <!-- Service Menu Start-->
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="material-icons-outlined">park</i>
+                    </div>
+                    <div class="menu-title">Service</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.services.index') }}"><i class="material-icons-outlined">nature</i>Services</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Service Menu End -->
+
             <!-- Blog Menu Start-->
             <li>
                 <a href="javascript:;" class="has-arrow">

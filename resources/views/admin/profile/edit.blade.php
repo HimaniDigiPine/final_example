@@ -32,6 +32,7 @@
                             <h5 class="mb-4">User Profile Update</h5>
                             <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data" class="row g-3" id="userProfileForm">
                                 @csrf
+                                @method('PUT')
                                 <div class="col-md-4">
                                     <label for="input1" class="form-label">First Name</label>
                                     <div class="input-group">
