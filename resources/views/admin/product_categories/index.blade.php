@@ -6,35 +6,31 @@
     <div class="main-content">
         
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Blogs</div>
+            <div class="breadcrumb-title pe-3">Product</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+                        <li class="breadcrumb-item active" aria-current="page">Product Category</li>
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ route('admin.blog.create') }}" class="btn btn-success px-4 raised d-flex gap-2">
-                        <i class="material-icons-outlined">add</i>
-                        Add New Blog
-                    </a>
-                </div>
-                <div class="btn-group">
-                    <button type="submit" id="bulk-delete-btn" class="btn btn-danger px-4 raised d-flex gap-2"> 
-                        <i class="material-icons-outlined">delete</i>
-                        Delete Selected Blogs
-                    </button>
-                </div>
+            <div class="ms-auto d-flex gap-2">
+                <a href="{{ route('admin.productscategories.create') }}" class="btn btn-success px-4 raised d-flex gap-2">
+                    <i class="material-icons-outlined">add</i>
+                    Add New Product Category
+                </a>
+                <button type="button" id="bulk-delete-btn" class="btn btn-danger px-4 raised d-flex gap-2"> 
+                    <i class="material-icons-outlined">delete</i>
+                    Delete Selected Product Category
+                </button>
             </div>
         </div>
 
         <div class="card-body">
             <div class="table-responsive">
                 <hr>
-                <table id="blogTable" class="table table-striped table-bordered" style="width:100%">
+                <table id="productCategoryTable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th class="w-25px">
@@ -42,13 +38,10 @@
                                     <input class="form-check-input" type="checkbox" id="select-all" />
                                 </div>
                             </th>
-                            <th>Blog Name</th>
-                            <th>Category</th>
-                            <th>Description</th>
-                            <th>Feature Image</th>
-                            <th>Author</th>
+                            <th>Category Name</th>
+                            <th>Status </th>
                             <th>Action</th>
-                        </tr>
+                        </tr>                   
                     </thead>
                 </table>
             </div>
@@ -60,6 +53,7 @@
 @endsection
 
 @push('scripts')
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
 
@@ -69,42 +63,37 @@
 
 <script>
 $(document).ready(function () {
-    var table = $('#blogTable').DataTable({
+
+    // Initialize DataTable
+    var table = $('#productCategoryTable').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
         autoWidth: false,
         columnDefs: [
             { targets: 0, width: "10px" },
-            { targets: 1, width: "50px" },
-            { targets: 2, width: "100px" },
-            { targets: 3, width: "80px" },
-            { targets: 4, width: "200px" },
-            { targets: 5, width: "60px" },
-            { targets: 6, width: "200px" }
+            { targets: 1, width: "150px" },
+            { targets: 2, width: "200px" },
+            { targets: 3, width: "120px" }
         ],
-        ajax: "{{ route('admin.blog.index') }}",
+        ajax: "{{ route('admin.productscategories.index') }}", // ✅ fixed
         columns: [
             {
                 data: 'id',
-                render: function(data) {
+                render: function (data) {
                     return `<input type="checkbox" class="select-row" value="${data}">`;
                 },
                 orderable: false,
                 searchable: false
             },
-            { data: 'blog_name', name: 'blog_name' },
-            { data: 'category_name', name: 'category_name' },
-            { data: 'blog_description', name: 'blog_description' },
-            { data: 'feature_image', name: 'feature_image', orderable: false, searchable: false },
-            { data: 'user_name', name: 'user_name' },
+            { data: 'name', name: 'name' }, 
+            { data: 'status', name: 'status' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
         ]
     });
 
-
     // Select/Deselect all rows
-    $('#select-all').on('click', function () {
+    $(document).on('click', '#select-all', function () {
         $('.select-row').prop('checked', this.checked);
     });
 
@@ -112,26 +101,33 @@ $(document).ready(function () {
         $('#select-all').prop('checked', $('.select-row:checked').length === $('.select-row').length);
     });
 
-
     // Bulk Delete
     $('#bulk-delete-btn').on('click', function () {
         var ids = $('.select-row:checked').map(function () {
             return $(this).val();
         }).get();
 
-        if (ids.length === 0) { alert('No blogs selected.'); return; }
+        if(ids.length === 0){
+            alert('No categories selected.');
+            return;
+        }
 
-        if (confirm('Are you sure you want to delete selected blogs?')) {
+        if(confirm('Are you sure you want to delete selected categories?')){
             $.ajax({
-                url: "{{ route('admin.blog.bulkDelete') }}",
-                method: 'POST',
-                data: { ids: ids, _token: '{{ csrf_token() }}', _method: 'DELETE' },
-                success: function(response) {
-                    alert(response.success);
+                url: "{{ route('admin.productscategories.bulkDelete') }}",
+                type: 'DELETE',
+                data: {
+                    ids: ids,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response){
+                    alert(response.message);
                     $('#select-all').prop('checked', false);
                     table.ajax.reload();
                 },
-                error: function() { alert('Something went wrong!'); }
+                error: function(){
+                    alert('Something went wrong!');
+                }
             });
         }
     });

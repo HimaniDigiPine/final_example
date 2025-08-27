@@ -6,14 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Service extends Model
+class ProductGallery extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'service_name',
-        'service_image',
-        'feature_image',
-        'service_description',
+        'product_id',
+        'image',
+        'position',
     ];
+
+   
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

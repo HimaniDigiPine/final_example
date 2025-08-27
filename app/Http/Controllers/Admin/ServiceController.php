@@ -38,7 +38,7 @@ class ServiceController extends Controller
                     $buttons = '';
                     if ($row->deleted_at) {
                         $buttons .= '<form action="'.route('admin.services.restore', $row->id).'" method="POST" style="display:inline-block;">'
-                            .csrf_field().'<button type="submit" class="btn btn-warning btn-sm">Restore</button></form> ';
+                            .csrf_field().'<button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(\'restore this Option?\')">Restore</button></form> ';
                         $buttons .= '<form action="'.route('admin.services.forceDelete', $row->id).'" method="POST" style="display:inline-block;">'
                             .csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Permanently delete?\')" >Delete</button></form>';
                     } else {

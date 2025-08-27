@@ -8,18 +8,20 @@
 
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Blog Categories</div>
+            <div class="breadcrumb-title pe-3">Product Categories</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Product Category</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.blog-categories.index') }}" class="btn btn-warning px-4 raised d-flex gap-2">
+                    <a href="{{ route('admin.productscategories.index') }}" class="btn btn-warning px-4 raised d-flex gap-2">
                         <i class="material-icons-outlined">arrow_back</i>
                         Back
                     </a>
@@ -34,48 +36,44 @@
                 <hr>
                 <div class="card">
                     <div class="card-body p-4">
-                        <h5 class="mb-4">Update Category</h5>
-                        <form action="{{ route('admin.blog-categories.update', $blogCategory->id) }}" method="POST" enctype="multipart/form-data" class="row g-3" id="categoryEditForm">
+                        <h5 class="mb-4">Product Category Insert</h5>
+                        <form action="{{ route('admin.productscategories.store') }}" method="POST" enctype="multipart/form-data" class="row g-3" id="productCategoryAddForm">
                             @csrf
-                            @method('PUT')
 
-                            <div class="col-md-12">
-                                <label for="category_name" class="form-label">Category Name</label>
+                            <div class="col-md-4">
+                                <label for="product_category_name" class="form-label">Product Category Name</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="material-icons-outlined fs-5">category</i></span>
-                                    <input type="text" class="form-control" id="category_name" placeholder="Category Name" name="category_name" value="{{ old('category_name', $blogCategory->category_name) }}">
+                                    <input type="text" class="form-control" id="product_category_name" placeholder="Product Category Name" name="product_category_name">
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
-                                <label for="category_small_description" class="form-label">Small Description</label>
+                            <div class="col-md-4">
+                                <label for="product_category_slug" class="form-label">Product Category Slug</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="material-icons-outlined fs-5">description</i></span>
-                                    <textarea class="form-control" id="category_small_description" name="category_small_description" rows="4">{{ old('category_small_description', $blogCategory->category_small_description) }}</textarea>
+                                    <input type="text" class="form-control" id="product_category_slug" placeholder="Product Category Slug" name="product_category_slug">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="product_category_status" class="form-label">Product Category Status</label>
+                                <div class="input-group">   
+                                    <select class="form-select" id="product_category_status" name="product_category_status" data-placeholder="Choose one thing">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="category_image" class="form-label">Category Image</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="material-icons-outlined fs-5">image</i></span>
-                                    <input type="file" name="category_image" class="form-control">
-                                </div>
-                                @if($blogCategory->category_image)
-                                    <div class="mt-2">
-                                        <img src="{{ asset('uploads/blog_category/'.$blogCategory->category_image) }}" alt="Category Image" width="100">
-                                    </div>
-                                @endif
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="d-md-flex d-grid align-items-center gap-3">
-                                    <button type="submit" class="btn btn-info px-4 d-flex align-items-center">
-                                        <i class="material-icons-outlined me-2" style="font-size:18px;">update</i>
-                                        <span>Update</span>
+                                <div class="d-md-flex d-grid align-items-center gap-3 mt-3">
+                                    <button type="submit" class="btn btn-primary px-4 d-flex align-items-center">
+                                        <i class="material-icons-outlined me-2" style="font-size:18px;">add</i>
+                                        <span>Insert</span>
                                     </button>
 
-                                    <button type="reset" class="btn btn-light px-4 d-flex align-items-center">
+                                    <button type="reset" class="btn btn-secondary px-4 d-flex align-items-center">
                                         <i class="material-icons-outlined me-2" style="font-size:18px;">refresh</i>
                                         <span>Reset</span>
                                     </button>
@@ -103,24 +101,40 @@
 <script>
 $(document).ready(function () {
 
-    $('#category_small_description').summernote({
-        height: 200
+    // Auto-generate slug
+    $('#product_category_name').on('keyup', function () {
+        let slug = $(this).val().toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)+/g, '');
+        $('#product_category_slug').val(slug);
     });
 
-    $("#categoryEditForm").validate({
+    // validate form
+    $("#productCategoryAddForm").validate({
         rules: {
-            category_name: { required: true, minlength: 2 },
-            category_small_description: { maxlength: 255 },
-            category_image: { extension: "jpg|jpeg|png|gif" } // not required on update
+            product_category_name: {
+                required: true, 
+                minlength: 2,
+            },
+            product_category_slug:{
+                required: false,
+                minlength: 2
+            },
         },
         messages: {
-            category_name: { required:"Please enter Category name" },
-            category_image: { extension: "Only JPG, JPEG, PNG, or GIF files are allowed" }
+            product_category_name: {
+                required:"Please enter Product Category Name"
+            },
+            product_category_slug: {
+                required: "Please enter Product Category Slug"
+            }
         },
         errorClass: "text-danger",
         errorElement: "span",
         highlight: function (el)   { $(el).addClass("is-invalid"); },
         unhighlight: function (el) { $(el).removeClass("is-invalid"); },
+
+        // place errors correctly when inside .input-group
         errorPlacement: function (error, element) {
             if (element.closest('.input-group').length) {
                 error.insertAfter(element.closest('.input-group'));
@@ -141,9 +155,9 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: "success",
                         title: "Success",
-                        text: response.message || "Category Updated Successfully!"
+                        text: response.message || "Product Category Added Successfully!"
                     }).then(() => {
-                        window.location.href = response.redirect || "{{ route('admin.blog-categories.index') }}";
+                        window.location.href = response.redirect || "{{ route('admin.productscategories.index') }}"; // ✅ fixed route
                     });
                 },
                 error: function (xhr) {
@@ -154,7 +168,7 @@ $(document).ready(function () {
                     });
                 }
             });
-            return false;
+            return false; // Prevent default submit
         } 
     });
 });

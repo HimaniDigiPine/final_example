@@ -34,7 +34,7 @@ class ThemeOptionFrontController extends Controller
                             <div class="d-flex gap-2">
                                 <form action="'.route('admin.theme_option_front.restore', $row->id).'" method="POST">
                                     '.csrf_field().'
-                                    <button type="submit" class="btn btn-sm btn-warning d-flex align-items-center">
+                                    <button type="submit" class="btn btn-sm btn-warning d-flex align-items-center" onclick="return confirm(\'Restore this option?\')">
                                         <i class="material-icons-outlined me-1" style="font-size:16px;">restore</i> 
                                         <span style="font-size:14px;">Restore</span>
                                     </button>

@@ -257,7 +257,12 @@
             $(".data-attributes span").peity("donut")
         </script>
         <script src="{{ asset('admin_assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	    <script src="{{ asset('admin_assets/plugins/select2/js/select2-custom.js') }}"></script>
+
         <script src="{{ asset('admin_assets/js/main.js') }}"></script>
+
 
         <!-- JQuery Validation -->
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>

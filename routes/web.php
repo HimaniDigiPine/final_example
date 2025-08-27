@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\ThemeOptionFrontController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
-
+use App\Http\Controllers\Admin\ProductController;
+use App\http\Controllers\Admin\ProductCategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,7 +51,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::post('blog-categories/restore/{id}', [BlogCategoryController::class, 'restore'])->name('blog-categories.restore');
     Route::delete('blog-categories/force-delete/{id}', [BlogCategoryController::class, 'forceDelete']) ->name('blog-categories.forceDelete');
     // Bulk Delete
-    Route::delete('blog-categories/bulk-delete', [BlogCategoryController::class, 'bulkDelete']) ->name('blog-categories.bulkDelete');
+    Route::delete('blog-categories/bulkDelete', [BlogCategoryController::class, 'bulkDelete'])
+        ->name('blog-categories.bulkDelete');
 });
 
 // Admin Blog Routes
@@ -75,4 +77,38 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::delete('services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulkDelete');
 
 });
+
+// Admin ProductCategory Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Resource CRUD routes
+    Route::resource('productscategories', ProductCategoryController::class);
+    // Restore and Force Delete
+    Route::post('productscategories/restore/{id}', [ProductCategoryController::class,'restore'])->name('productscategories.restore');
+    Route::delete('productscategories/force-delete/{id}', [ProductCategoryController::class,'forceDelete'])->name('productscategories.forceDelete');
+     // Bulk delete
+    Route::delete('productscategories/bulkdelete', [ProductCategoryController::class, 'bulkDelete'])
+        ->name('productscategories.bulkDelete');
+});
+
+// Admin Porduct Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function (){
+    // Resource CRUD routes
+    Route::resource('products', ProductController::class);
+    // Restore and Force Delete for Products
+    Route::post('products/restore/{id}', [ProductController::class, 'restore'])
+        ->name('products.restore');
+
+    Route::delete('products/force-delete/{id}', [ProductController::class, 'forceDelete'])
+        ->name('products.forceDelete');
+
+    // Bulk soft delete for Products
+    Route::delete('products/bulkdelete', [ProductController::class, 'bulkDelete'])
+        ->name('products.bulkDelete');
+
+    // extra route for deleting gallery images
+    Route::delete('products/gallery/{id}', [ProductController::class, 'deleteGallery'])
+        ->name('products.gallery.delete');
+});
+
+
  
