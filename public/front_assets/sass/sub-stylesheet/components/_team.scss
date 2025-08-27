@@ -1,0 +1,280 @@
+.team{    
+    @extend %p-rel;
+    &__wrapper{
+        @include margin-top(80px);        
+    }
+    &__inner{
+        @include border-radius(5px);
+        @extend %hidden;
+        .thumb{
+            @extend %hidden, %p-rel;         
+            img{
+                @extend %w-100;                
+            }
+            .allicon{
+                @extend %abs, %wd-40, %hd-40;                              
+                right: 20px;
+                top: 30px;
+                .fixedicon{
+                    @extend %mb-10;
+                    i{
+                        background: $titlecolor;
+                        @extend %wd-40, %hd-40,%pointer, %line-height-40, %text-center, %border-radius-4;
+                        @extend %white-color;
+                    }
+                    &:hover{
+                        i{
+                            @extend %bgtheme;
+                        }
+                    }
+                }
+               ul{
+                    @extend %mp-0-im, %transition2;                    
+                        visibility: hidden;
+                        transform: translateX(65px); 
+                        opacity: 0;
+                    li{
+                        @extend %list-none; 
+                        margin-bottom: 10px;
+                        a{
+                            @extend %wd-40, %hd-40, %line-height-40, %text-center;
+                            @extend %border-radius-4, %d-inline-block;
+                            i{
+                                @include font-size(18px);
+                                @extend %white-color;
+                            }
+                            &:hover{
+                                @extend %bg-white-im;
+                                i{
+                                    @extend %text-color;
+                                }
+                            }
+                        }                        
+                        &:nth-child(1){                            
+                            a{
+                                
+                                background: $dribble;     
+                            }
+                        }
+                        &:nth-child(2){                            
+                            a{
+                                
+                                background: $instagram;  
+                            }
+                        }
+                        &:nth-child(3){                            
+                            a{
+                                background: $linkedin;   
+                            }
+                        }
+                        &:nth-child(4){                            
+                            a{                                 
+                                background: $facebook; 
+                            }
+                        }                   
+                    }                    
+                }            
+                &:hover{
+                    >ul{    
+                    margin-bottom: 10px; 
+                    visibility: visible;  
+                    transform: translateX(0);  
+                    opacity: 1; 
+                    }
+                }
+            } 
+            &::after{        
+                @extend %abs, %bottom-0,%left-0, %w-100, %h-50, %transition; 
+                @include breakpoint(sm){
+                    background-image: linear-gradient(to top, rgb(115, 182, 17), rgb(0, 0, 0, 0));  
+                    transform: scaleY(0);
+                    transform-origin: bottom;  
+                }     
+            } 
+        }
+        .text{
+            @extend %bg1,%text-center;
+            @include padding(20px 30px);  
+            h6{
+                a{
+                    @extend %title-color, %text-none;
+                } 
+            }  
+            p{
+                margin-top: 2px;
+            }
+        }  
+       &:hover{        
+         box-shadow: 0px 0px 15px 0px rgba(179, 181, 191, 0.60);        
+        .thumb{
+            @include breakpoint(sm){
+                &::after{
+                    transform: scaleX(1); 
+                }
+            }
+        }
+         .text{
+            h6{
+                a{
+                    @extend %text-color;
+                }
+            }
+         }
+       }  
+      &--innerpage2{
+        @extend %p-rel;
+         .text{
+            @extend %abs, %left-0, %w-100, %bgtransprant-im, %transition, %bottom-0;  
+            transform: scale(0);          
+            h6{
+                @extend %white-color;
+            }
+            p{
+                @extend %white-color;
+            }
+         }
+         &:hover{
+            .text{
+                transform: scale(1);         
+            }
+         }
+      }       
+    }  
+    .section__wrapper{
+        @include margin-top(70px);
+    }     
+}
+
+
+.teamsingle{
+    @include padding(120px 0 180px 0);
+    @include breakpoint(sm){
+        @include padding(120px 0 0 0);
+    }
+}
+
+.teamprofile {
+    @include padding(120px 0 180px 0);
+    @include breakpoint(sm){
+        @include padding(120px 0 0 0);
+    }
+    &__img {
+        img {
+            @extend %w-100;
+        }
+    }
+    &__allcontent{ 
+        border: 1px solid #F8F5F0;
+        @include padding(20px); 
+
+        @include breakpoint(xl){
+             @include padding(30px 30px 40px 30px);
+        } 
+    } 
+    &__personalcontent { 
+        @include breakpoint(xl){            
+          @include margin-left(40px);
+        }        
+        h4{
+            @include font-size(28px);
+        }
+        span {
+            @extend %text-400,
+            %font-16,
+            %text-capitalize, %mt-5, %d-inline-block;
+        }
+        .data {
+            @include margin-top(30px);
+            >ul {
+                @extend %flex, %mp-0-im;
+                flex-direction: column;
+                gap:18px;
+                li {
+                    @extend %flex, %align-items-center, %list-none;
+                    @include breakpoint(max-sm){
+                        flex-direction: column;
+                        align-items: start;
+                    }
+                    span {
+                        width: 150px;
+                        @extend %d-inline-block,
+                        %title-color,
+                        %text-600;
+                    }
+                    p {
+                        @extend %text-500, %mb-0;
+                    }
+                    .allicon {                     
+                       @include breakpoint(max-sm){
+                            @include margin-top(10px);
+                       } 
+                        ul {
+                            @extend %flex,%mp-0-im;
+                            gap: 10px;
+
+                            li {
+                                @extend %list-none;
+                                a {
+                                    @extend %wd-40,
+                                    %hd-40,                                    
+                                    %line-height-40;
+                                    @include border-radius(20px);
+                                    @extend %text-center,
+                                    %transition;
+                                    i {
+                                        @extend %text-color,
+                                        %font-14;
+                                    }
+                                    &:hover {
+                                        @extend %bgtheme, %white-color;
+                                        i{
+                                            @extend  %white-color;
+                                        }                                       
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    &__experience{
+        @include margin-top(30px);
+      h5{
+        @extend %mb-15;        
+      }
+      p{        
+        &:last-child{
+            @extend %mb-0;
+        }
+      }
+
+    }
+    &__year{
+               
+        h5{
+            @extend %mb-15;            
+        }
+        p{
+            
+            &:last-child{
+                @extend %mb-0;
+            }
+        }
+    }
+    &__Guidelines{
+        h5{
+            @extend  %mb-15;
+            
+        }
+        p{
+            @extend  %mb-0;
+        }
+    }
+    &__skillyeaer{
+        @include padding-block(30px); 
+    }
+}

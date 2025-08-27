@@ -1,0 +1,155 @@
+.accordion-item {  
+  @extend %mb-20, %border-none-im;
+  @include add-prefix(border-radius, 4px);
+  
+  .accordion-button {
+    @extend %p-0,
+    %mb-0,
+    %text-600,
+    %bg-white,
+    %title-color,    
+    %justify-between-im, %pointer, %text-capitalize,%font;
+    @include font-size(16px);
+    @include breakpoint(sm){
+      @include font-size(20px);
+    }
+    .plus-icon {
+      @extend %wd-40,
+      %hd-40,
+      %bgtheme,
+      %border-radius-4,
+      %p-rel,
+      %transition;
+      margin-left: auto;
+      &:active {
+        @extend %bgtheme;
+      }
+      &:after {
+        @extend %abs,
+        %top-50,
+        %left-50;
+        width: 14px;
+        height: 2px;
+        @extend %bg-white-im;
+        transform: translate(-50%, -50%);
+      }
+      &:before {
+        @extend %abs,
+        %top-50,
+        %left-50;
+        width: 2px;
+        height: 14px;
+        @extend %bg-white-im;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &:after {
+      @extend %d-none;
+    }    
+    &:focus {
+      border-color: none;
+      box-shadow: none;
+    }
+  }
+  .accordion-body {
+    @extend %p-0;
+    p {
+      @extend %mp-0,
+      %text-500;
+      max-width: 432px;      
+      color: #555;
+    }
+  }
+  .accordion-button:not(.collapsed) {
+    box-shadow: none;
+    @extend %transition,
+    %bg-white;
+    border-radius: inherit !important;
+    .plus-icon {
+      @extend %bg-white,
+      %transition;
+      &:before {
+        width: 14px;
+        height: 2px;
+        
+      }
+      &:after{
+        @extend %bgtheme-im;
+      }
+
+    }
+  }
+  &--itme2Serpage {
+    @extend %p-0-im;
+    @include breakpoint(xl){
+      max-width: 550px;
+    }    
+    .accordion-button {
+      @extend %white-color;
+      @include padding(15px 20px);
+      .plus-icon {
+        @extend %bg-white;
+        &:after {
+          @extend %bgtheme;
+        }
+        &:before {
+          @extend %bgtheme;
+        }
+      }
+    }
+    .accordion-body {
+      @extend %bg-white;
+      @include padding(25px 30px);
+      p{
+        max-width: 100%;
+        @include breakpoint(lg){
+          max-width: 475px;
+        }
+      }
+    }
+    .accordion-button:not(.collapsed) {
+      @extend %transition,
+      %white-color-im, %bgtheme;
+      .plus-icon {
+        @extend %transition,
+        %bg-white;
+      }
+    }
+
+  }   
+  &--item2{
+    .accordion-button{
+       border:1px solid #F8F5F0;
+    }
+    .accordion-body:not(.collapsed) {
+      border:1px solid #F8F5F0;
+    }
+  }
+}
+
+
+.question{  
+  @extend %p-rel;
+  .section__wrapper{
+    @include breakpoint(max-xl){
+      @include margin-top(50px);
+    }
+  } 
+  &__rightimg{
+    @extend %p-rel;
+    .plybtn{
+      @extend %abs, %top-50, %left-50;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+    img{
+      @extend %w-100;
+    }
+  }
+  &--paddingservice{
+    @include padding(120px 0 180px 0);    
+    @include breakpoint(sm){
+      @include padding(120px 0 0 0);    
+    }
+  }  
+}

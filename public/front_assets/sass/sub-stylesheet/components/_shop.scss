@@ -1,0 +1,713 @@
+.shoppage { 
+    &__item {               
+        @include padding(15px); 
+        border: 1px solid #F8F5F0;
+        @extend %border-radius-4; 
+        &:hover {
+            .thum {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+            .content {
+                a {
+                    @extend %text-color;
+                }
+            }
+        } 
+        .thum { 
+            @extend %p-rel; 
+            z-index: 10;
+            @extend %hidden;
+            img {
+                @extend %w-100,
+                %h-100;
+            }
+            .shoppagelink{
+                @extend %abs, %top-50, %left-50, %transition2, %flex;
+                gap: 10px;
+                transform: translate(-50%, -50%) scale(0);                
+                a{
+                    @extend %wd-30, %hd-30, %d-inline-block, %line-height-30,%text-center;
+                    @extend %bg-white;
+                    @include border-radius(15px);
+                    i{
+                        @include font-size(15px);
+                        @extend %text-color;
+                    }                    
+                }
+            }
+            &:after{
+              @extend %abs, %top-0, %left-0, %w-100, %h-100;
+              @extend %bgtheme, %transition2; 
+              opacity: 0.7;
+              transform: scale(0);
+            }
+            &:hover{
+                .shoppagelink{
+                    transform: translate(-50%, -50%) scale(1.1);                    
+                } 
+                &:after{
+                    transform: scale(1.1);   
+                } 
+            }
+        }
+        .content {
+            @extend %text-center;
+            @include padding(20px 0);
+            a {
+                @extend %title-color,
+                %mb-0,
+                %d-block, %text-none;               
+            }
+            span {
+                @extend %text-600,
+                %m-block-5,
+                %d-inline-block;
+            }
+            .allstar {
+                @extend %flex,
+                %justify-center, %mb-10;
+                gap: 3px;
+                i {
+                    @extend %text-color;
+                    @include font-size(12px);
+                }
+            }
+        } 
+        
+    &--itemshoppage{
+    .thum{
+        @include breakpoint(md){
+            max-width: 240px;
+        }
+    }
+    .content{
+        @extend %text-left;
+        @include padding-left(30px);
+        @include breakpoint(md){
+           width: calc(100% - 220px);
+        }
+        .allstar{
+            justify-content: flex-start;
+            @include margin-bottom(10px);
+        }
+    }
+   }
+}  
+
+}
+
+.shoppagenav{
+    @extend %flex, %align-items-center, %bgtheme; 
+    @include padding(15px 20px);
+    @include margin-bottom(25px);
+    h6{
+        @extend %white-color;
+    }    
+  .nav-tab{
+    @extend %flex, %align-items-center;
+    border: none !important; 
+    width: 130px;
+    gap: 10px;
+    @include breakpoint(esmm){
+        margin-left: auto;
+    }    
+    .nav-link{
+        @include border-radius(0px);
+        @extend %white-color; 
+        @include font-size(25px);
+        @include padding(2px 15px); 
+        border: 1px solid #fff;    
+
+        @include breakpoint(max-esmm){
+            @include margin-top(10px);
+        }
+        &.active{
+           @extend %bg-white, %text-color;
+           @include border-radius(0px);
+        }
+    }
+  }  
+}
+
+.shopdetails{  
+    @include padding(120px 0 50px 0);
+    &__leftinner{
+        .productsdetails1{
+            @include margin-top(20px);
+        }           
+        .swiper-slide-thumb-active{
+            opacity: 0.9 !important;
+            @extend %bg1;                          
+        }      
+    }
+    &__innerthumb{
+        @extend %hidden,%text-center;          
+        img{
+            @extend %w-100;
+        }
+    }
+    &__smallthumb{
+        img{
+            @extend %w-100;
+            cursor: pointer;
+        }
+    }         
+    &__content{ 
+        max-width: 600px;      
+        margin-left: auto;            
+        h6{
+            @include font-size(16px);
+            @include margin-top(3px);
+            @extend %black-color;
+            span{
+                @extend %text-500,%text-color;                
+            } 
+        }
+        .rating{
+            @extend %flex, %align-items-center;
+            p{
+                @extend %my-0, %text-capitalize, %mr-5, %black-color, %text-600;
+            }            
+            span{
+                i{
+                    @include font-size(12px);
+                    @extend %text-color;  
+                    margin-right: 2px;                                      
+                }
+            }
+            a{
+              @extend %ml-5, %text-none;   
+              color: #707070;            
+            }
+        }
+        p{
+          @include margin(20px 0);           
+
+        }  
+        ul{
+            @extend %mp-0-im;
+            li{
+                @extend %list-none, %mb-10;
+                i{
+                    @extend %text-color, %mr-5;
+                }
+                &:last-child{
+                    @extend %mb-0-im;
+                }
+            }
+        }      
+        .countadd {
+            @extend %flex,
+            %align-items-center;                       
+            @include margin-top(40px);
+            gap: 20px;            
+            .cart-plus-minus{
+                @extend %flex, %align-items-center;
+                gap: 10px;               
+                padding: 7px; 
+                border: 1px solid #F2F6F9;
+                input{                    
+                    border: 1px solid #F2F6F9;
+                    @include padding(0);
+                    @extend %wd-40, %hd-40, %line-height-40;
+
+                    &.cart-plus-minus-box{
+                        @extend %text-center;
+                    }
+                }               
+                .qtybutton{
+                   @extend %pointer, %wd-40, %hd-40, %text-center, %line-height-40;                    
+                   border: 1px solid #F2F6F9;
+
+                   &:hover{
+                    @extend %bgtheme, %white-color;
+                   }
+                }
+            }
+            form{
+                width: 200px;
+                input{
+                    background: #fafafa;
+                    border: 1px solid #a2a2a24f; 
+                    @include padding(13px); 
+                }
+            }
+            a{                
+                @extend %d-block-im;
+                @include breakpoint(xl){
+                    @include padding(0px 142px);
+                    display: inline-block;
+                }
+                @extend %mt-0-im, %text-center;
+            }            
+        }
+    }
+    &__wrapper{
+        border: 1px solid #F1F1F1; 
+        @include padding(20px);
+    }
+}
+
+
+.cartdesk { 
+    @include breakpoint(max-sm){
+        @include padding-bottom(200px);
+    }
+    &__innerborder{
+        border: 1px solid #F1F1F1; 
+    }
+    &__item {  
+    border-bottom: 1px solid #F1F1F1;
+    @extend %mb-30, %pb-30;    
+    }
+    &__img {
+        @extend %wd-80, %hidden,%hd-80;
+        @include border-radius(40px);
+        img {
+            @extend %w-100;
+        }
+    }
+
+    &__text {        
+        .nametext {
+            @extend %flex,
+            %justify-between,
+            %align-items-center;
+            .profile {
+                h6 {
+                    @extend %mb-5;
+                }
+                span {
+                    @extend %text-400;
+                }
+            }
+            .allstar {                
+                @include breakpoint(max-esm){
+                    @include margin-top(5px);
+                }
+                .star { 
+                    i {
+                        @extend %text-color,
+                        %mp-0,
+                        %d-inline-block;
+                        @include font-size(13px);
+                    }
+                }
+            }
+        }
+        .destext {
+            @extend %mt-5;
+            p {
+                max-width: 649px;
+                @extend %text-400;
+            }
+        }
+    }
+
+    &__header {
+        nav {
+            .nav {
+                @extend %border-none-im;
+                .nav-link {
+                    @extend %border-none-im,
+                    %text-capitalize,
+                    %text-color,
+                    %text-600, %bg-theme;                    
+                    @include padding(15px 50px);
+                    @include border-radius(0px);
+                    &.active {
+                        @extend %bgtheme,
+                        %white-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &__content{
+        ul{
+            @extend %mp-0-im;
+            li{
+                @include margin-bottom(5px);
+                @extend %list-none;
+                i{
+                    @extend %text-color, %mr-10;
+                }
+            }
+        }
+    } 
+    &__itemheading{
+        @include padding-bottom(20px);
+        @extend %text-center, %p-rel;
+        &:after{
+            @extend %abs, %top-100, %left-50;            
+            width:  500px;
+            height: 1px;
+            background: #F1F1F1;
+            transform: translateX(-50%);
+        }
+    }  
+
+}
+
+.cartpage {    
+    @include padding(120px 0 180px 0);
+    @include breakpoint(sm){
+        @include padding(120px 0 0 0);
+    }
+    &__inner {
+        @include breakpoint(max-lg) {
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+    }
+
+    &__item {        
+        width: 760px;
+        @extend %auto;
+        border: 1px solid #F2F6F9;
+        @extend %border-radius-4;
+        @include breakpoint(xl) {
+            margin-left: auto;
+        }        
+    }
+
+    &__header {
+        ul {
+            @extend %flex, %mp-0-im;
+            li {
+                @extend %text-color, %list-none,
+                %text-600,
+                %text-center,
+                %text-capitalize;
+                @include padding(20px);
+                border-right: 1px solid #F2F6F9;
+
+                &:nth-child(1) {
+                    width: 288px;
+                    @extend %text-left;
+                }
+
+                &:nth-child(2) {
+                    width: 100px;
+                }
+
+                &:nth-child(3) {
+                    width: 160px;
+                }
+
+                &:nth-child(4) {
+                    width: 110px;
+                }
+
+                &:nth-child(5) {
+                    width: 100px;
+                    border-right: none;
+                }
+
+            }
+        }
+    }
+
+    &__body {
+        ul {
+            @extend %mp-0-im;
+            li {
+                @extend %flex,
+                %align-items-center,
+                %text-center, %list-none;
+                .product {
+                    @extend %flex,
+                    %align-items-center,
+                    %hd-100,
+                    %line-height-100;
+                    width: 288px;
+                    @extend %text-left,
+                    %border-top-right;
+                    gap: 20px;
+                    @include padding-left(20px);                   
+                    .thum{
+                        @extend %wd-60;
+                    }
+                    .text {
+                        h6{
+                            @include font-size(16px);
+                            a{
+                                @include font-size(16px);
+                                @extend %text-none;
+                            }
+                        }                        
+                    }
+                }
+
+                .price {
+                    width: 100px;
+                    @extend %hd-100,
+                    %line-height-100,
+                    %border-top-right;
+
+                    span {
+                        @extend %text-500;
+                        color: #0B2239;
+                    }
+                }               
+                .countadd {
+                    @extend %flex,
+                    %align-items-center, %justify-center;                
+                    border-right:1px solid #F2F6F9;
+                    border-top:1px solid #F2F6F9;
+                    @include padding(22px 0);             
+                    width: 160px;       
+                    .cart-plus-minus{
+                        @extend %flex, %align-items-center;
+                        gap: 5px;               
+                        padding: 7px; 
+
+                        input{                    
+                            border: 1px solid #F2F6F9;
+                            @include padding(0);
+                            color: #0B2239;
+                            @extend %wd-40, %hd-40, %line-height-40;
+
+                            &.cart-plus-minus-box{
+                                @extend %text-center;
+                            }
+                        }               
+                        .qtybutton{
+                           @extend %pointer, %wd-40, %hd-40, %line-height-40;                    
+                           border: 1px solid #F2F6F9;
+                           color: #0B2239;
+
+                           &:hover{
+                                @extend %bgtheme, %white-color;
+                           }
+                        }
+                    }
+                    a{
+                        @include padding(15px 50px);
+                        @extend %d-inline-block;
+                    }                    
+                }
+                .total {
+                    width: 110px;
+                    @extend %hd-100,
+                    %line-height-100,
+                    %border-top-right;
+                    span {
+                        @extend %text-500;
+                        color: #0B2239;
+                    }
+                }
+                .remove {
+                    width: 100px;
+                    @extend %hd-100,
+                    %line-height-100,
+                    %border-top-right;
+                    border-right: none;
+                    i {
+                        @extend %text-color,
+                        %pointer;
+                    }
+
+                    span {
+                        @extend %text-500;
+                        color: #0B2239;
+                    }
+                }
+
+                &:last-child {
+                    .product {
+                        @extend %border-bottom;
+                    }
+
+                    .price {
+                        @extend %border-bottom;
+                    }
+
+                    .countadd {
+                        @extend %border-bottom;
+                    }
+
+                    .total {
+                        @extend %border-bottom;
+                    }
+
+                    .remove {
+                        @extend %border-bottom;
+                    }
+                }                
+            }
+        }
+    }
+
+    &__discountcode {
+        @extend %flex,
+        %align-items-center;
+        max-width: 470px;
+        @include padding(20px);
+
+        input {
+            width: calc(100% - 180px);
+            border: 1px solid #F2F6F9;
+            color: #555;
+        }
+        ::placeholder {
+            @extend %text-500;
+        }
+        button {
+            width: 180px;
+            height: 58px;            
+            @extend %border-none, %line-height-60,
+            %border-radius-0-im,
+            %font-16;
+
+        }
+    }
+
+    &__paymentitem {
+        border: 1px solid #F2F6F9;
+        @include breakpoint(max-xxxl) {
+            max-width: 770px;
+            margin: auto;
+        }
+        .header {
+            @include padding(20px 30px);
+            @extend %border-bottom, %mt-0-im;
+            ul {
+                @extend %flex,
+                %align-items-center,
+                %justify-between, %mp-0-im;
+                li {
+                    @extend %text-600,
+                    %text-capitalize, %list-none;
+                    color: #272727;
+                    @include font-size(16px);
+
+                    &:last-child {
+                        @extend %text-color;
+                    }
+                }
+            }
+        }
+        .content {
+            @include padding(20px 30px);
+
+            p {
+                @extend %text-600,
+                %text-capitalize;
+                color: #272727;
+            }
+
+            form {
+                @include margin-top(10px);
+                .item {
+                    @extend %flex,
+                    %align-items-center,
+                    %mb-10;
+
+                    &:last-child {
+                        @extend %mb-0;
+                    }
+
+                    input {
+                        @extend %mr-20,
+                        %wd-15,
+                        %hd-15;
+                    }
+
+                    label {
+                        width: calc(100% - 35px);
+                        @extend %text-capitalize,
+                        %flex,
+                        %justify-between;
+
+                        span {
+                            @extend %text-500,
+                            %text-capitalize;
+                            color: #272727;
+                        }
+                    }
+                }
+                .country {
+                    @include margin-top(25px);
+
+                    p {
+                        @extend %text-color;
+                        @include margin-bottom(10px);
+                    }
+                    select {
+                        border: 1px solid #F2F6F9;
+
+                        option {
+                            @include padding(15px 20px);
+                            @extend %text-capitalize;
+                        }
+
+                    }
+
+                }
+
+                .zipcode {
+                    @extend %my-15;
+
+                    input {
+                        border: 1px solid #F2F6F9;
+                        color: #272727;
+                    }
+
+                    ::placeholder {
+                        color: #272727; 
+                    }
+                }
+
+                .update {
+                    button {
+                        background: #F2F6F9;
+                        @extend %border-none,
+                        %d-block,
+                        %w-100,
+                        %text-color,
+                        %text-center,
+                        %text-800,
+                        %text-capitalize;
+                        @include padding(15px 20px);
+                    }
+                }
+
+                .totall {
+                    @extend %my-20;
+
+                    ul {
+                        li {
+                            @extend %flex,
+                            %justify-between;
+
+                            span {
+                                @extend %text-color,
+                                %text-600,
+                                %font-16,
+                                %text-capitalize;
+
+                                &:last-child {
+                                    @extend %text-color;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                .checkout {
+                    a {
+                        @extend %d-block,
+                        %text-center;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}

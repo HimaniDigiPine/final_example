@@ -1,0 +1,47 @@
+.contactus{     
+    &__inner{        
+        @extend %text-center;
+        @include padding(40px 20px);
+        border: 1px solid #F8F5F0;
+        .thumb{     
+            @extend %mb-15, %wd-70, %hd-70, %line-height-80, %p-rel, %auto;             
+            &::after{
+                @extend %abs, %top-0, %left-0, %border-1, %w-100, %h-100;
+                border-style: dashed; 
+                @include border-radius(35px);               
+            }      
+            i{
+                @extend %text-color;
+                @include font-size(25px);
+            }
+        }
+        .text{
+            h6{
+                @include margin-bottom(10px);
+            } 
+            ul{
+                @extend %mp-0-im;
+                li{
+                    @extend %list-none, %text-400;
+                    span{
+                        @extend %text-color;
+                    }
+                }
+            }
+            
+        }
+        &:hover{
+            .thumb{
+                @extend %iconanimation;                
+            }
+        }
+    }      
+}
+
+
+.map{    
+    iframe{
+        @extend %w-100;
+        min-height: 600px;
+    }
+}

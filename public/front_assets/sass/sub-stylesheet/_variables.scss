@@ -1,0 +1,98 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+
+// Colors
+
+$title-color: #0066B3;
+$title-color1: #000;
+$desc-color: #555555;
+$theme-color: #FFAB00;
+$theme-color2: #FFB83D;
+$theme-color3: #29ABE2;
+$theme-color4: #FF3147;
+$dark-color: #0B2239;
+$border-color: #D9D9D9;
+$white-color: #fff;
+$black-color:#000000;
+$ash-color: #f9f9f9;
+$bg-color:#F2F6F9;
+$body-color: #F8F8F8;
+$grey-color: #555555;
+$secondary-color:#13172B;
+
+
+// social-media color
+$facebook: #3b5998;
+$twitter: #55acee;
+$linkedin: #007bb5;
+$skype: #2fb7df;
+$youtube: #cd201f;
+$google: #dd4b39;
+$camera: #e4405f;
+$instagram: #e4405f;
+$tumblr: #34465d;
+$behance: #1769ff;
+$dribble:#ea4c89;
+$star: #e9ba17;
+$green: #0be881;
+$green-h: #0fbcf9;
+$red: #f53b57;
+$yellow: #dec32b;
+$nell: #212fb4;
+$navy: #d8e0f3;
+$plaseholder: #a0a6bc;
+$pinterest : #bd081c;
+$basketball : #e94c89;
+$globe : #ff5e9c;
+$vimeo : #3b5998;
+
+$shadow-color: #888;
+//== Typography
+
+
+//Google Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+// font-family
+$font: "Poppins", sans-serif;
+$font2:"Public Sans", sans-serif;
+$font3:"Manrope", sans-serif;
+
+
+// font-size
+$fs-base: 1rem !default;
+$fs-large: 1rem; //16px;
+$fs-small: 0.875rem; //14px
+$fs-h1:3.75rem; //60px;
+$fs-h2: 2.5rem; //40px;	
+$fs-h3: 2.25rem; //36px;		
+$fs-h4: 1.875rem; //30px;	
+$fs-h5: 1.5rem; //24px;		
+$fs-h6: 1.25rem; //20px;		
+
+// heading line height
+$lh-h1: 72px;
+$lh-h2: 48px;
+$lh-h3: 48px;
+$lh-h4: 32px;
+$lh-h5: 24px;
+$lh-h6: 30px;
+
+// Description line height
+$lh-p: 24px;
+
+//  transition
+$transition: all 0.3s ease;
+$transition2: all 0.5s ease;
+
+// projeect color 
+$theme:#73B611;
+$bg:#F8F5F0;
+$titlecolor: #1E1E1E;
+$pcolor:#555555; 

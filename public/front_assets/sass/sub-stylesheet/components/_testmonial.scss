@@ -1,0 +1,92 @@
+.testmonial { 
+    &__header{
+      @extend %text-center, %flex, %justify-center;
+      @include margin-bottom(60px);
+      p{
+        max-width: 500px;
+        @extend %auto, %mt-5;
+      }
+    }
+    &__item {
+        @extend %flex,
+        %bg-theme,
+        %align-items-center,
+        %border-radius-4;
+        gap: 35px;
+        flex-direction: column;
+        @include padding(30px 15px);
+
+        @include breakpoint(sm) {
+            flex-direction: row;
+            @include padding(30px);
+        }          
+    }        
+    .thum {
+        @extend %wh-80,
+        %hd-80,
+        %bg-white,
+        %white-color,
+        %p-rel;
+        @include border-radius(50px);
+
+        @include breakpoint(max-sm) {
+            margin: auto;
+        } 
+        img {
+            @extend %w-100;
+        }
+        .quode {
+            @extend %wd-40,
+            %hd-40,
+            %text-center,
+            %left-50,
+            %abs, %bgtheme;                
+            @include transform(translateX(-50%));
+            top: 80%;
+            @include line-height(40px);
+            @include border-radius(20px);
+            outline: 4px solid #fff;
+            i {
+                @extend %font-20;
+                margin-top: 10px;
+            }
+        }
+    }
+    &__content {
+        @extend %w-100;
+        
+        @include breakpoint(xl) {
+            width: calc(100% - 100px - 35px);
+        }
+        .profile {
+            @extend %flex,
+            %align-items-center,
+            %justify-between;
+            @include margin-top(20px);
+            .name {
+                h6 {
+                    @extend %mb-0
+                }
+                span {
+                    @extend %text-400;
+                }
+            }
+            .star {
+                ul {
+                    @extend %flex;
+                    gap: 2px;
+                    li {
+                        @extend %list-none;
+                        i {                            
+                            @include font-size(15px);
+                            @extend %text-color;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}
+
+       
+

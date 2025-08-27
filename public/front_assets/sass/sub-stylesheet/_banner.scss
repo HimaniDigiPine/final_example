@@ -1,0 +1,217 @@
+.banner{  
+  @extend %p-rel;      
+  &__content {          
+    @extend %p-rel, %hidden; 
+    @include padding(150px 0);
+
+    @include breakpoint(xl){
+      @include padding(200px 0);
+    }
+    h3 {                  
+      line-height: 1.1 !important;            
+      @include margin-bottom(15px);
+      @include transform(translateY(-900px));            
+      @include transition(2.5s);
+      @include font-size(50px);
+
+      @include breakpoint(xl){
+        @include font-size(65px);
+      }      
+    }         
+    p {        
+      @include transform(translateY(-900px));           
+      @include transition(2.5s);
+    }
+    .bannerbtn {
+      @extend %flex, %align-items-center;
+      @include margin-top(40px);  
+      @include transition(2.5s);             
+      @include transform(translateY(-900px));
+      gap: 15px;
+
+      @include breakpoint(sm) {
+        gap: 30px;
+      }      
+      a { 
+        @extend %text-600;              
+      }
+    }          
+    &--contentpage2 {
+      @extend %text-center;
+      @include padding(150px 0);
+      
+      @include breakpoint(xl){
+        @include padding(380px 0 200px 0);
+      }
+      h3 {
+        @extend %marauto, %white-color, %transition;
+        max-width: 871px;
+        @include transform(translateY(900px));
+      }
+      p {        
+        @extend  %marauto-im, %white-color, %transition;
+        @include padding-bottom(15px);                
+        max-width: 600px; 
+        @include transform(translateY(900px));
+      }
+      .bannerbtn {
+        @extend %justify-center, %transition; 
+        @include transform(translateY(900px));       
+      }
+    }
+    &--contentpage3{
+      h3{
+        @extend %white-color;
+      }
+      p{
+        @extend %white-color;
+      }
+    }
+  }        
+  
+  .position_bshape{
+    @extend %abs;  
+    &.topleftimg{        
+      left: -1%;   
+      @include breakpoint(xxxxxl){
+        left: 4%;   
+      }
+      @include breakpoint(xxxxl){
+        bottom: 85%; 
+      }
+      img{      
+        @extend %d-none;
+        @include breakpoint(xxxxl){
+          display: inherit;
+        } 
+      }    
+      @extend %shapeanimation;  
+    } 
+    &.contentrightimg{
+      @extend %top-50;       
+      @include breakpoint(md){
+        left: 60%;      
+        display: inherit; 
+        transform: translateY(-50%);
+      }    
+    }
+    &.topright{    
+      @include breakpoint(xxxxxl){
+        right: 5%;         
+        bottom: 88%;
+      }
+      img{
+        @extend %d-none;
+        @include breakpoint(xxxxxl){
+          width: 90%;
+          display: inherit;        
+        }
+      }
+      animation-name: shaperight;
+      animation-duration: 4s;
+      animation-iteration-count: 1;      
+    }
+    &.bottomleft{    
+      left: 2%; 
+      bottom: 0%;    
+      position: absolute;
+      animation-name: bottomleft;
+      animation-duration: 5s;
+      animation-iteration-count: infinite; 
+      animation-delay: 3s;
+    }
+    &.bottommiddle{
+      left: 50%; 
+      bottom: 0%;    
+      position: absolute;
+      transform: translateX(-50%);
+    }
+    &.bottomright{
+      right:0%; 
+      bottom: 0%;    
+      position: absolute;    
+    }
+    &.middleshape{
+      left:50%; 
+      bottom: 65%;    
+      position: absolute;
+      animation-name:middelshape;
+      animation-duration: 4s;
+      animation-iteration-count: 1; 
+    }
+  }    
+  
+  @keyframes shaperight{
+    0%{              
+      bottom: 50%;  
+      opacity: 0; 
+    }
+    100%{
+      bottom: 88%;
+      opacity: 1;  
+    }
+  }
+  
+  @keyframes bottomleft{
+    0%{              
+      left: 0%;        
+    }
+    50%{
+      left: 5%;        
+    }
+    100%{
+      left: 0%;    
+    }
+  }
+  
+  @keyframes middelshape{
+    0%{              
+      bottom: 10%;  
+      opacity: 0; 
+    }
+    100%{
+      bottom: 65%;
+      opacity: 1;  
+    }
+  } 
+
+
+  .swiper-slide-active {
+    .banner__content { 
+      h3 {
+        @include transform(translateY(0px));
+                        
+      }
+      p {
+        @include transform(translateY(0px));
+                      
+      }
+      .bannerbtn {
+        @include transform(translateY(0px));
+                        
+      }
+    }   
+    
+  }
+
+  &--bannertwo{
+    @extend %bgtransprant-im;
+    &::after{
+      @extend %bgtransprant-im;
+    }
+  }
+}
+
+
+.swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fff; 
+    @include add-prefix(border-radius, 50%);  
+    @extend %bgtransprant, %opacity-1;
+}
+
+.swiper-pagination-bullet-active {
+    border: transparent;
+    @extend %bg-theme;
+}

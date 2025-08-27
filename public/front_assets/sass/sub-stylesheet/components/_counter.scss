@@ -1,0 +1,51 @@
+.counter {  
+    background: url("..//..//..//img/home-1/counter/bg.png");
+    @extend %bg-no-repeat, %bg-cover;
+     
+    &__inner {        
+        @extend %text-center;
+        .thumb {
+            @extend %wd-100, %hd-100, %line-height-100, %text-center, %p-rel;            
+            @extend  %auto;
+            @include margin-bottom(20px); 
+            &::after{
+                @extend %abs,%top-0, %left-0, %w-100, %h-100;
+                border: 1.7px solid $theme;
+                border-style: dashed; 
+                @include border-radius(50px);
+            }              
+        }
+        &:hover{
+            .thumb{
+                img{
+                    transform: rotateY(180deg);
+                }
+                &::after{
+                    @extend %iconanimation;
+                }
+            }
+        }
+    }
+
+    &__content {
+        .maincounter{
+            @extend %flex,
+            %align-items-center,
+            %justify-center;
+            h3 {
+                @extend %white-color;               
+            }
+            span {
+                @extend %white-color,
+                %mb-0,
+                %text-700;
+                @include font-size(30px); 
+            }
+        }         
+        h6{
+            @extend %white-color, %font, %text-500;
+            @include margin-top(10px);
+            @include font-size(16px); 
+        }             
+    }    
+}
