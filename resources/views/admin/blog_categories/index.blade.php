@@ -123,28 +123,33 @@ $(document).ready(function () {
         }).get();
 
         if (ids.length === 0) {
-            alert('No categories selected.');
+            alert('No Blog Categories selected.');
             return;
         }
 
         if (confirm('Are you sure you want to delete selected categories?')) {
             $.ajax({
-			    url: "{{ route('admin.blog-categories.bulkDelete') }}",
-			    method: 'POST',
-			    data: {
-			        ids: ids,
-			        _token: '{{ csrf_token() }}',
-			        _method: 'DELETE'
-			    },
-			    success: function (response) {
-			        alert(response.success);
-			        $('#select-all').prop('checked', false);
-			        table.ajax.reload();
-			    },
-			    error: function () {
-			        alert('Something went wrong!');
-			    }
-			});
+                url: "{{ route('admin.blog-categories.bulkDelete') }}",
+                type: 'POST', // We'll spoof DELETE
+                data: {
+                    ids: ids,
+                    _token: '{{ csrf_token() }}',
+                    _method: 'DELETE'
+                },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message); // ✅ now shows the proper message
+                        $('#select-all').prop('checked', false);
+                        table.ajax.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Something went wrong! Check console for details.');
+                }
+            });
         }
     });
 

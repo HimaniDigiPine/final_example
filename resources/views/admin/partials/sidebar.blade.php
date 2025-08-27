@@ -41,7 +41,7 @@
                 </ul>
             </li>
             <li class="menu-label">UI Elements</li>
-            <li>
+            <!--<li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
                     </div>
@@ -55,7 +55,7 @@
                     <li><a href="component-cards-contact.html"><i class="material-icons-outlined">arrow_right</i>Contacts</a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
             <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
@@ -63,21 +63,21 @@
                     <div class="menu-title">eCommerce</div>
                 </a>
                 <ul>
-                    <li><a href="ecommerce-add-product.html"><i class="material-icons-outlined">arrow_right</i>Add Product</a>
+                    <li><a href="{{ route('admin.products.index') }}"><i class="material-icons-outlined">inventory_2</i>Product</a>
                     </li>
-                    <li><a href="ecommerce-products.html"><i class="material-icons-outlined">arrow_right</i>Products</a>
+                    <li><a href="{{ route('admin.productscategories.index') }}"><i class="material-icons-outlined">category</i>Products Category</a>
                     </li>
-                    <li><a href="ecommerce-customers.html"><i class="material-icons-outlined">arrow_right</i>Customers</a>
+                    <!--<li><a href="ecommerce-customers.html"><i class="material-icons-outlined">arrow_right</i>Customers</a>
                     </li>
                     <li><a href="ecommerce-customer-details.html"><i class="material-icons-outlined">arrow_right</i>Customer Details</a>
                     </li>
                     <li><a href="ecommerce-orders.html"><i class="material-icons-outlined">arrow_right</i>Orders</a>
                     </li>
                     <li><a href="ecommerce-customer-details.html"><i class="material-icons-outlined">arrow_right</i>Order Details</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
-            <li>
+            <!--<li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class="material-icons-outlined">card_giftcard</i>
                     </div>
@@ -123,8 +123,8 @@
                     <li><a href="component-text-utilities.html"><i class="material-icons-outlined">arrow_right</i>Utilities</a>
                     </li>
                 </ul>
-            </li>
-            <li>
+            </li> -->
+            <!--<li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class="material-icons-outlined">view_agenda</i>
                     </div>
@@ -139,8 +139,8 @@
                         Icons</a>
                     </li>
                 </ul>
-            </li>
-            <li class="menu-label">Forms & Tables</li>
+            </li>-->  
+            <!--<li class="menu-label">Forms & Tables</li>
             <li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class="material-icons-outlined">toc</i>
@@ -200,8 +200,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-label">Pages</li>
-            <li>
+            <li class="menu-label">Pages</li> -->
+            <!--<li>
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class="material-icons-outlined">lock</i>
                     </div>
@@ -350,7 +350,7 @@
                     </div>
                     <div class="menu-title">Support</div>
                 </a>
-            </li>
+            </li> -->
 
             <!-- Service Menu Start-->
             <li>

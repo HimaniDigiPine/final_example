@@ -132,11 +132,11 @@ $(document).ready(function () {
         }).get();
 
         if (ids.length === 0) {
-            alert('No categories selected.');
+            alert('No Theme Options selected.');
             return;
         }
 
-        if (confirm('Are you sure you want to delete selected categories?')) {
+        if (confirm('Are you sure you want to delete selected Options?')) {
             $.ajax({
 			    url: "{{ route('admin.theme_option_front.bulkDelete') }}",
 			    method: 'POST', // Laravel DELETE spoof

@@ -35,11 +35,11 @@ class BlogController extends Controller
                 ->addColumn('action', function ($row) {
                     $buttons = '';
                     if ($row->deleted_at) {
-                        $buttons .= '<form action="'.route('admin.blog.restore', $row->id).'" method="POST">'.csrf_field().'<button type="submit" class="btn btn-warning btn-sm">Restore</button></form>';
-                        $buttons .= '<form action="'.route('admin.blog.forceDelete', $row->id).'" method="POST">'.csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+                        $buttons .= '<div class="d-flex gap-2"><form action="'.route('admin.blog.restore', $row->id).'" method="POST">'.csrf_field().'<button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(\'Restore this?\')">Restore</button></form>';
+                        $buttons .= '<form action="'.route('admin.blog.forceDelete', $row->id).'" method="POST">'.csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Permanently delete?\')">Delete</button></form></div>';
                     } else {
-                        $buttons .= '<a href="'.route('admin.blog.edit', $row->id).'" class="btn btn-info btn-sm">Edit</a>';
-                        $buttons .= '<form action="'.route('admin.blog.destroy', $row->id).'" method="POST">'.csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-danger btn-sm">Delete</button></form>';
+                        $buttons .= '<div class="d-flex gap-2"><a href="'.route('admin.blog.edit', $row->id).'" class="btn btn-info btn-sm">Edit</a>';
+                        $buttons .= '<form action="'.route('admin.blog.destroy', $row->id).'" method="POST">'.csrf_field().method_field('DELETE').'<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Soft delete this?\')">Delete</button></form></div>';
                     }
                     return $buttons;
                 })

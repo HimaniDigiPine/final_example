@@ -38,7 +38,7 @@ class BlogCategoryController extends Controller
                             <div class="d-flex gap-2">
                                 <form action="'.route('admin.blog-categories.restore', $row->id).'" method="POST">
                                     '.csrf_field().'
-                                    <button type="submit" class="btn btn-sm btn-warning">Restore</button>
+                                    <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm(\'Restore this?\')">Restore</button>
                                 </form>
                                 <form action="'.route('admin.blog-categories.forceDelete', $row->id).'" method="POST">
                                     '.csrf_field().method_field('DELETE').'
@@ -186,9 +186,20 @@ class BlogCategoryController extends Controller
     public function bulkDelete(Request $request)
     {
         $ids = $request->ids;
-        if (!empty($ids)) {
-            BlogCategory::whereIn('id', $ids)->delete();
+
+        if (empty($ids)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No options selected.'
+            ]);
         }
-        return response()->json(['success' => 'Selected categories deleted successfully.']);
+
+        // Soft delete the selected categories
+        BlogCategory::whereIn('id', $ids)->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Selected Blog Categories have been deleted successfully.'
+        ]);
     }
 }
