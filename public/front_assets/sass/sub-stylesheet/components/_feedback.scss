@@ -1,0 +1,172 @@
+.feedback{
+    @extend %p-rel;
+    &::after{
+        @extend %abs, %top-0,%left-0,%h-100;
+        @extend %bg-no-repeat, %bg-cover;
+        @include breakpoint(xl){
+            background-image: url("..//..//..//img/home-1/feedback/bg.jpg");
+            background-position: center;
+            width:48%;
+        }        
+        @include breakpoint(xxl){
+         width:50%;
+        }
+    }    
+    &__header{
+        @include margin-bottom(60px);
+        p{
+            @extend %mt-10;
+        }
+    }
+    &__item{
+        @extend %flex; 
+        flex-direction: column;
+        gap: 20px;
+    }
+    &__inner {
+        @include padding(42px);
+        @include border-radius(5px);
+        .top{
+            @extend %flex,        
+            %align-items-center;
+            gap: 30px;
+
+        .thumb{
+            @extend %wh-80,
+            %hd-80,
+            %bg-white,
+            %white-color;
+            @include border-radius(50px);
+            img {
+                @extend %w-100;
+            }            
+        }  
+        .profile {
+            width: calc(100% - 110px);
+            @extend %flex,            
+            %justify-between;
+            @include margin-top(20px);
+            .name {
+                h6 {
+                    @extend %mb-0
+                }    
+                span {
+                    @extend %text-400;
+                }
+            }
+            .star {
+                ul {
+                    @extend %flex, %mp-0-im;
+                    gap: 2px;
+                    li {
+                        @extend %list-none;
+                        i {                            
+                            @include font-size(13px);
+                            @extend %text-color;
+                        }
+                    }
+                }
+            }
+        }
+        } 
+        .bottom{
+            p{
+             @extend %d-inline-block; 
+             @include margin-top(30px);  
+            }
+        }
+    } 
+    .row{
+        @include breakpoint(xl){
+            @include margin-left(70px);            
+        }
+        @include breakpoint(max-xl){
+            flex-direction: column-reverse;
+        }
+    }  
+    .positionfeedback{
+        @extend %abs; 
+        &.righttop{
+            @extend %d-none;
+            @include breakpoint(xxxxxl){
+                right: 0%;
+                top: 2%;
+                display: inherit;
+            }
+        }
+    }     
+}
+
+.feedback2{    
+    &__inner{
+        border: 1px solid #F8F5F0;        
+        @include padding(20px);
+        @extend %border-radius-4;        
+        @include margin(80px 0 40px 0);
+        @include breakpoint(md){
+            @include margin(50px 0);
+        }
+        .icon{
+            @extend %wd-70, %hd-70, %text-center, %line-height-70, %bg-white, %bg-no-repeat, %p-rel;                       
+            z-index: 1;
+            margin-top: -60px;  
+            &::after{
+                @extend %abs, %top-0,%left-0,%w-100, %h-100;
+                border: 1px solid $theme;
+                @include border-radius(35px);
+                border-style: dashed; 
+            }          
+        }  
+        .text{            
+            @include margin-top(40px);            
+            .profile{
+             @extend %flex, %align-items-center;
+             gap: 20px;
+             @include margin-top(25px);
+              .thumb{
+                @extend %wd-60, %hd-60, %hidden;
+                @include border-radius(50%);
+                 img{
+                    @extend %w-100;
+                 }
+              }
+              .name{             
+                 p{
+                    @extend %mt-0-im;
+                 }
+                 ul{
+                     @extend %mp-0-im, %flex;
+                     gap: 2px;
+                     li{
+                         @extend %list-none;
+                         i{
+                             @include font-size(12px);
+                             @extend %text-color;
+                         }
+                     }
+                 }
+              }
+            } 
+        }  
+        &:hover{
+           border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;            
+            .icon{
+                @extend %iconanimation;
+            }
+            .text{
+              .profile{
+                 .name{
+                   h6{
+                    @extend %text-color;
+                   }
+                 }    
+              }
+
+            }
+        }   
+    }
+    .section__wraaper{
+        @include margin-top(60px);
+    }
+}

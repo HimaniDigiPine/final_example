@@ -50,9 +50,9 @@
         <div class="overlay btn-toggle"></div>
         <!--end overlay-->
 
-        <!-- Header Start -->
+        <!-- Footer Start -->
         @include('admin.partials.footer');
-        <!-- Header End -->
+        <!-- Footer End -->
 
 
         <!--start cart-->

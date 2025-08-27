@@ -1,0 +1,768 @@
+.header {
+    max-width: 1400px;
+    @extend %auto;
+
+    @include breakpoint(xxxxxl) {
+        @include margin-top(50px);
+    }
+
+    &--headerpage2 {
+        @extend %w-100-im;
+
+        @include breakpoint(xl) {
+            position: absolute;
+            left: 50%;
+            z-index: 999;
+            transform: translateX(-50%);
+            width: 1400px;
+            top: 0px;
+        }
+
+        &.propertynone {
+            position: inherit;
+            left: 0;
+            width: 100% !important;
+            transform: inherit;
+        }
+    }
+
+    &--headerpage3 {
+        max-width: 100% !important;
+        @extend %mt-0-im;
+    }
+
+    &__top {
+        border-bottom: 1px solid #EFEFEF;
+
+        &--toppage2 {
+            @extend %bgtheme-im;
+        }
+
+        @include breakpoint(max-xl) {
+            display: none;
+        }
+    }
+
+    &__topcontent {
+        @extend %flex, %justify-center, %align-items-center;
+
+        @include breakpoint(lg) {
+            justify-content: space-between;
+        }
+
+        @include breakpoint(max-lg) {
+            @include padding(20px 0 10px 0);
+        }
+
+        .left {
+            ul {
+                @extend %flex, %align-items-center, %mp-0-im;
+
+                @include breakpoint(max-lg) {
+                    gap: 15px 20px;
+                }
+
+                @include breakpoint(max-md) {
+                    justify-content: center;
+                }
+
+                li {
+                    @extend %flex, %align-items-center, %list-none;
+                    .icon {
+                        i {
+                            @extend %text-color, %mr-10;
+                        }
+                    }
+
+                    .text {
+                        p {
+                            @extend %title-color, %text-500;
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        @include breakpoint(lg) {
+                            border-right: 1px solid #EFEFEF;
+                            border-left: 1px solid #EFEFEF;
+                            @include padding(15px 25px);
+                            @include margin(0 25px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            @include breakpoint(md) {
+                @include breakpoint(max-lg) {
+                    @include margin-left(20px);
+                }
+            }
+
+            ul {
+                @extend %flex, %align-items-center, %mp-0-im;
+                @include breakpoint(max-lg) {
+                    justify-content: center;
+                }
+                li {
+                    @extend %list-none;
+                    @include padding(14px 10px);
+
+                    @include breakpoint(lg) {
+                        @include padding(14px);
+                        border-right: 1px solid #EFEFEF;
+                    }
+
+                    &:first-child {                        
+                        @include breakpoint(lg) {
+                            border-left: 1px solid #EFEFEF;
+                        }
+                    }
+
+                    a {
+                        @extend %wd-25, %hd-25, %line-height-25, %d-inline-block, %text-center;
+                        background: $titlecolor;
+                        @include border-radius(20px);
+
+                        i {
+                            @extend %white-color;
+                            @include font-size(12px);
+                        }
+
+                        &:hover {
+                            @extend %bgtheme;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--topcontentpage2 {
+            @include breakpoint(lg) {
+                @include padding(0);
+            }
+
+            .left {
+                ul {
+                    @include breakpoint(max-lg) {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px 25px;
+                    }
+
+                    li {
+                        .icon {
+                            i {
+                                @extend %white-color-im;
+                            }
+                        }
+
+                        .text {
+                            p {
+                                @extend %white-color-im;
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            @include breakpoint(lg) {
+                                @include padding(10px 20px);
+
+                            }
+
+                            @extend %border-none;
+
+                            @include breakpoint(lg) {
+                                @include padding(15px 25px);
+                                border-right: 1px solid #EFEFEF52;
+                                border-left: 1px solid #EFEFEF52;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right {
+                ul {
+                    li {
+                        @include padding(10px);
+
+                        @include breakpoint(lg) {
+                            @include padding(15px);
+                            border-right: 1px solid #EFEFEF52;
+                        }
+
+                        &:first-child {
+                            @include breakpoint(max-lg) {
+                                padding-left: 0;
+                            }
+                        }                       
+
+                        &:first-child {
+                            @include breakpoint(lg) {
+                                border-left: 1px solid #EFEFEF52;
+                            }
+                        }
+
+                        a {
+                            @extend %bg-white-im;
+
+                            i {
+                                @extend %text-color;
+                                @include font-size(12px);
+                            }
+
+                            &:hover {
+                                @extend %bgtheme;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // header top end here
+    &__bottom {
+        max-width: 1400px;
+        @extend %auto;
+        @extend %p-rel,
+        %transition2;
+
+        &--bottompage3 {
+            max-width: 100%;
+        }
+
+        @include padding(20px 10px);
+
+        &.header-fixed {            
+            @extend %transition2;            
+            @include breakpoint(xl){
+                top: 0;
+                width: 100% !important;
+                position: fixed;
+                max-width: inherit;
+                z-index: 99999;
+                box-shadow: 1px 1px 11px 3px rgba(215, 215, 215, 0.4);
+            }
+
+            .ellepsis {
+                @extend %d-none;
+                @extend %transition;
+
+            }
+        }
+
+        @include breakpoint(xl) {
+            background: $bg;
+        }
+        .right {
+            @extend %flex,
+            %align-items-center;
+            justify-content: flex-end;
+            gap: 20px;
+            @include breakpoint(xl) {
+                gap: 30px;
+            }
+            .bar {
+                width: 30px;
+
+                i {
+                    @extend %text-color,
+                    %pointer;
+                    @include font-size(25px);
+                }
+            }
+
+            .ellepsis {
+                @extend %transition;
+
+                i {
+                    @extend %pointer, %text-color;
+                    @include font-size(20px);
+                }
+            }
+        }
+    }
+
+    &__cart {
+        @extend %wd-25;
+        @extend %flex;
+        @extend %p-rel;
+        z-index: 9999;
+
+        .carticon {
+            z-index: 1;
+            a {
+                @extend %text-none;
+
+                i {
+                    @extend %text-color;
+                    @include font-size(20px);
+                }
+            }
+            &:after {
+                @extend %abs, %text-center;
+                top: -15px;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                @extend %line-height-20, %white-color;
+                @include border-radius(10px);
+                content: '3';
+                background: $titlecolor;
+                font-size: 14px;
+            }
+        }
+        .cart-details {
+            @include padding(20px 15px);
+            @extend %bg-white, %abs, %flex, %align-items-center, %transition2;
+            box-shadow: 0px 0px 10px rgba(212, 212, 212, .58);
+            top: calc(100% + 10px);
+            right: 30px;
+            visibility: hidden;
+            opacity: 0 ;
+            z-index: 9999;
+            &.cartopen {
+                @include breakpoint(max-esmm) {
+                    visibility: visible;
+                    opacity: 1;
+                    right: -70px;
+                }
+            }
+            .close {
+                margin-left: auto;
+
+                i {
+                    line-height: 25px;                    
+                    @extend %wd-25, %hd-25, %bgtheme, %text-center;
+                    @extend %pointer, %white-color;
+                }
+            }
+
+            .item {
+                @extend %flex, %align-items-center;
+                width: 270px;
+                gap: 18px;
+                border-bottom: 1px solid #70707030;
+                @extend %mb-15, %pb-15;
+
+                .thumb {
+                    width: 70px;
+                }
+
+                .right {
+                    width: calc(100% - 88px);
+                    @extend %flex, %align-items-center, %justify-between;
+                    .text {
+                        h6 {
+                            a {
+                                @include font-size(15px);
+                                @extend %black-color, %text-none;
+                            }
+                        }
+
+                        p {
+                            @extend %text-600, %text-color;
+                        }
+
+                        span {
+                            @extend %bg-black, %d-inline-block, %white-color;
+                            @include font-size(11px);
+                            @extend %wd-70, %hd-20, %line-height-20, %text-center;
+                        }
+                    }
+
+                    .cros {
+                        i {
+                            @extend %pointer;
+                        }
+                    }
+                }
+
+                &:hover {
+                    .right {
+                        .text {
+                            h6 {
+                                a {
+                                    @extend %text-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .total {
+                @extend %flex, %align-items-center, %justify-between;
+                width: 270px;
+
+                .subtotal {
+                    p {
+                        span {
+                            @extend %text-color, %text-500;
+                        }
+                    }
+                }
+
+                .checkout {
+                    a {
+                        @extend %d-inline-block, %border-2, %text-none;
+                        @include padding(5px 15px);
+                        @extend %bg-theme, %text-600, %black-color;
+
+                        &:hover {
+                            @extend %bgtransprant;
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint(esmm){
+            &:hover {
+                .cart-details {                
+                    right: -50px;
+                    right: 0;
+                    visibility: visible;
+                    opacity: 1;               
+                }
+            }
+        }
+    }
+    &__nav {
+        .mobilelogo {
+            @include breakpoint(max-xl) {
+                background: #73B611;
+                @include padding(15px 20px);
+                border-bottom: 2px solid $theme;
+            }
+        }
+        &.target {
+            @include breakpoint(max-xl) {
+                position: absolute;
+                top: 0%;
+                left: -100%;
+                width: 70%;                
+                z-index: 99999;
+                background: #fff;
+                @include transition(1s);
+                box-shadow: 1px 1px 11px 3px rgba(215, 215, 215, 0.4);
+            }
+        }
+
+        &.open {
+            left: 0%;
+            @include transition(1s);
+        }
+        .mainactive { 
+            &.activescroll {
+                @include breakpoint(max-xl) {                   
+                    width: 100%;                                        
+                }
+            }
+            .scrooling_logo {
+                width: 200px;
+            }
+            >ul {
+                @extend %flex,
+                %align-items-center, %justify-center, %mp-0-im;
+                @include breakpoint(max-xl) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                li {
+                    @extend %p-rel,
+                    %text-capitalize, %list-none, %mp-0-im;
+                    overflow: hidden;
+                    @include breakpoint(max-xl) {
+                        width: 100%;
+                        border-bottom: 1px solid rgba(242, 246, 249, 0.53);
+                    }
+
+                    a {
+                        @include padding(15px 30px);
+                        @extend %d-block, %text-600, %text-none, %text-uppercase;
+                        @extend %black-color;
+                        @include font-size(16px);
+
+                        @include breakpoint(xl) {
+                            display: inline-block;
+                        }                      
+
+                        @include breakpoint(max-xl) {
+                            width: 100%;
+                            border-bottom: .5px solid rgba(242, 246, 249, 0.12);
+                        }                       
+
+                        &:hover {
+                            @include breakpoint(xl) {
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    @include breakpoint(xl) {
+                        &:hover {
+                            overflow: visible;
+                            a {
+                                color: $theme;
+
+                            }
+                        }
+                    }
+
+                    >ul {
+                        @include breakpoint(xl){
+                            background: #73B611;
+                        }
+                        @extend %opacity-1,
+                        %visi-visiable, %mp-0-im;
+                        left: 3%;
+                        top: calc(100% + 50px);
+                        z-index: 9999;
+                        width: 100%;
+                        @include breakpoint(xl) {
+                            left: 0;
+                            position: absolute;
+                            opacity: 0 !important;
+                            visibility: hidden;
+                            transition: $transition2;
+                            width: 290px;
+                        }
+
+                        @include breakpoint(max-xl) {
+                            display: none;
+                        }
+
+                        li {
+                            border-bottom: 1px solid rgba(242, 246, 249, 0.53);
+                            @extend %p-rel, %mp-0-im;                          
+
+                            &::after {
+                                @extend %top-50, %wd-15, %hd-15, %text-center, %d-inline-block, %white-color;
+
+                                @include breakpoint(xl) {
+                                    content: "\f06c";
+                                    position: absolute;
+                                    transform: translateY(-50%);
+                                    left: 10px;
+                                    font-family: "Font Awesome 6 Pro";
+                                    font-weight: 900;
+                                    border-radius: 50%;
+                                    font-size: 1em;
+                                    line-height: 1;
+                                    opacity: 0;
+                                    visibility: visible;
+                                    -webkit-transition: 0.3s ease-in-out;
+                                    transition: 0.3s ease-in-out;
+                                } 
+                            }
+
+                            a {
+                                @extend %d-block,
+                                %w-100,
+                                %text-uppercase,                           
+                                %transition;
+                                color: #1E1E1E; 
+                                @include padding(12px 40px);
+
+                                @include breakpoint(xl) {
+                                    @include padding(12px 20px);
+                                    color: #fff !important;                                   
+                                }
+                                &.active {                                    
+                                    @extend %bgtheme;
+                                    color: #fff;      
+                                    @include breakpoint(xl){
+                                        background: #1E1E1E;  
+                                    }                              
+                                }
+                            }
+
+                            &.menu-item-has-children {
+                                >a {
+                                    &::after {
+                                        background: #fff;
+                                    }
+
+                                    &::before {
+                                        background: #fff;
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                >a {
+                                    @extend %white-color, %bgtheme;                                    
+                                    @include padding-left(35px);
+                                    @include breakpoint(xl){
+                                        background: $titlecolor;  
+                                    }
+                                }
+
+                                &::after {
+                                    visibility: visible;
+                                    @extend %opacity-1, %text-color;
+                                }
+                            }
+
+                            &:last-child {
+                                @extend %border-none;
+                            }
+
+                            ul {
+                                @include breakpoint(max-xl) {
+                                    display: none;
+                                }
+
+                                @include breakpoint(xl) {
+                                    position: absolute;
+                                    left: 100%;
+                                    top: calc(100% + 100px);
+                                }
+
+                                li {
+                                    a {
+                                        @include breakpoint(max-xl) {
+                                            @include padding(15px 20px 15px 40px);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @include breakpoint(xl) {
+                                &:hover {
+                                    ul {
+                                        top: 0;
+
+                                        li {
+                                            a {
+                                                @include padding-right(65px);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    @include breakpoint(xl) {
+                        &:hover {
+                            >ul {
+                                top: calc(100% + 0px);
+                                opacity: 1 !important;
+                                visibility: visible;
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        a {
+                            @extend %pr-0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__bottombtn {
+        a {
+            padding: 0 38px;
+        }
+    }
+
+    .menu-item-has-children {
+        >a {
+            @extend %rel;
+
+            &::after {
+                @extend %abs, %bgtheme, %top-50;
+                transform: translateY(-50%);
+                right: 25px;
+                width: 10px;
+                height: 2px;
+            }
+
+            &::before {
+                @extend %abs, %bgtheme;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 29px;
+                width: 2px;
+                height: 10px;
+                @include transition($transition);
+            }
+
+            @include breakpoint(xl) {
+                &::after {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 9px;
+                    width: 10px;
+                    height: 2px;
+                    background: $titlecolor;
+                }
+
+                &::before {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 13px;
+                    width: 2px;
+                    height: 10px;
+                    background: $titlecolor;
+                    @include transition($transition);
+                }
+            }
+        }
+
+        &:hover {
+            >a {
+                &:before {
+                    @include breakpoint(xl) {
+                        transform: translate(-50%, -50%) rotate(90deg);
+                        opacity: 0;
+                    }
+                }
+
+                &::after {
+                    background: $theme;
+                }
+            }
+        }
+
+        &.open {
+            >a {
+
+                &::after,
+                &::before {
+                    @extend %text-color;
+                }
+
+                &:before {
+                    @include breakpoint(max-xl) {
+                        transform: translate(-50%, -50%) rotate(90deg);
+                        opacity: 0;
+
+                    }
+                }
+            }
+        }
+    }
+
+    &__sidebarinnerheadeing {
+        .btn-close {
+            &.btn-close-white {
+                filter: none !important;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+
+        }
+
+    }
+}

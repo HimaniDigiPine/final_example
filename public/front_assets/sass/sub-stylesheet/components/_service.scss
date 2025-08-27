@@ -1,0 +1,340 @@
+.service{ 
+    @include breakpoint(xl){
+        background-image: url("..//..//..//img/home-1/service/pata.png");
+    }
+    @extend %p-rel, %bg-no-repeat;
+    background-position: 93% 50%;
+    &__wrapper{
+        p{
+            @include margin-top(15px);
+        }
+    }
+    &__item{
+        @include margin-top(40px);        
+    }
+    &__inner{
+        @include margin-top(20px);        
+        .thumb{
+            @extend %wd-75, %hd-75, %line-height-75,%p-rel,%text-center;
+            &::after{
+                @extend %abs,%top-0, %left-0, %w-100, %h-100;
+                border: 1.7px solid $theme;
+                border-style: dashed; 
+                @include border-radius(40px);
+            }
+        }
+        .text{            
+            @include breakpoint(md){
+                 @include margin-top(20px);
+            }
+            p{
+                @extend %text-400, %mt-10;
+                @include breakpoint(xl){
+                    max-width: 300px;
+                }
+            }
+            a{
+                @extend %text-none, %d-inline-block, %text-600,%title-color, %mt-15;
+                i{
+                    @include font-size(12px);
+                }
+            }
+        }
+        &:hover{
+            .thumb{
+               @extend  %iconanimation;
+               img{
+                transform: rotateY(180deg);
+               }
+            }
+            .text{
+                h6{
+                    a{
+                        @extend %text-color;
+                    }
+                }
+                a{
+                    @extend %text-color;  
+                }
+            }
+        }
+        &--innerservicepage{
+            .text{
+                p{
+                    @include breakpoint(md){
+                        max-width: 380px;
+                    }
+                }
+            }
+        }
+    } 
+    &__headerpage3{
+        p{
+            @extend %mt-5;
+        }
+    }
+    &--servicepage3{
+    @extend %bgtransprant-im;   
+    &::after{
+       @extend %abs, %top-0, %left-0,%h-100;
+       @extend %bg-cover;
+       @include breakpoint(xl){
+           width: 30%;
+           background-image: url("..//..//..//img/home-3/service/bg.jpg");
+           background-position: center;
+       }
+       @include breakpoint(xxxl){
+           width: 40%;
+       }
+    }
+    &::before{
+      @extend %abs, %top-0, %right-0,%h-100; 
+       width: 60%;
+       background-image: url("..//..//..//img/home-3/service/bgright.jpg");
+       z-index: -1;
+    }
+    }
+    &__rightimg{
+        img{
+           @extend %w-100;
+           @extend %d-none;
+           @include breakpoint(xl){
+            display: inherit;
+           } 
+           
+        }
+    }
+    &--historypage{
+        background-position: 98% 100%, 92% 200%, -10% 10%;  
+        @extend %bg-theme;
+        background-image: none;
+        .section__wrapper{
+            @include margin-top(60px);
+        }
+    }  
+    &__wrapperservicepage{
+        @extend %mt-20-im;
+    }  
+    .positonshape{
+        @extend %abs;       
+        &.topshape{
+            @include breakpoint(xxxxl){
+                top: 100px;            
+                left: 3%;
+                animation-name: servicetopshape;
+                animation-duration: 5s;
+                animation-iteration-count: infinite; 
+            }            
+        }
+    }    
+    @keyframes servicetopshape{
+        0%{              
+            top: 100px;
+        }
+        50%{
+            top: 150px;  
+            transform: skew(5deg);      
+        }
+        100%{
+            top: 100px;
+        }
+    } 
+}
+
+.service2{
+    @extend %p-rel;
+    &__header{
+        @extend %text-center;        
+        p{
+            @extend %text-center;
+            @include margin-top(10px);
+        }
+    }
+    &__item{       
+        @extend %border-radius-4, %hidden;
+        .thumb{      
+            >img{
+                @extend  %w-100;
+            }      
+            .icon{
+                @extend %bgtheme, %wd-75, %hd-75, %line-height-75, %auto, %text-center, %p-rel;
+                margin-top: -30px;
+                z-index: 1;
+                border: 1.2px solid #ffff;
+                border-style: dashed;
+                @include border-radius(40px);                     
+            }
+        }
+        .text{
+            @include padding(30px  20px 40px 20px);
+            @extend %text-center;
+            h6{
+                a{
+                    @extend %mb-10, %text-none, %d-inline-block;
+                }
+            }            
+        }
+       &--itemservicepage{
+          border: 1px solid #F8F5F0;
+          @extend %my-5;
+       }
+       &:hover{
+         h6{
+            a{
+                @extend %text-color;
+            }
+         }
+       }
+    }
+    &__wrapper{
+        @include margin-top(40px);
+    }
+}
+
+.servicesingle {
+    @include padding(120px 0 180px 0);
+    @include breakpoint(sm){
+        @include padding(120px 0 0 0);
+    }
+    &__sidebar {
+        .allheading {
+            border: 1px solid #F8F5F0;
+            padding: 20px;
+            @extend %border-radius-4; 
+            ul {
+                @extend %mp-0-im;
+                li {
+                    @extend %d-block, %list-none,
+                    %font,
+                    %text-600,                    
+                    %text-capitalize,%bg-theme, %mb-15, %flex;
+                    @include font-size(20px);
+                    @include padding(15px 25px);
+                    a {
+                        @extend %d-block,
+                        %font,
+                        %text-600,
+                        %title-color, %text-none;
+                        i{
+                            @extend %text-color, %mr-10;
+                        }
+                    }  
+                    &:last-child{
+                        @extend %mb-0-im;
+                    }                                    
+
+                }
+            }
+        }
+        .brouchore { 
+            border: 1px solid #F8F5F0; 
+            @include padding(20px);  
+            @include margin-top(30px); 
+            @extend %border-radius-4;                        
+            .pdf-icon {                
+                @include padding(50px 140px);
+                @extend %border-radius-4, %bg-theme, %text-center; 
+                img{
+                    @extend %wd-100;
+                }                   
+            }
+            .text {
+                @include margin-top(30px);   
+                a{
+                   @include margin-top(30px); 
+                   @extend %d-inline-block;
+                }                 
+            }            
+           &.brouchoreneedhelp{
+            @include padding-bottom(15px);
+                .thumb{
+                    @extend %border-radius-4;
+                    img{
+                        @extend %w-100,%border-radius-4;
+                    }
+                }
+                .text{
+                    ul{
+                        @extend %mp-0-im;
+                        li{
+                            @extend %bgtransprant, %p-0, %align-items-center;
+                            display: flex;
+                            gap: 20px;
+                            border-bottom: 1px solid #F8F5F0;
+                            @extend %mb-15, %pb-20, %list-none;
+                            &:last-child{
+                                @extend %mb-0, %pb-0, %border-none-im;
+                            }
+                            .icon{ 
+                                i{
+                                    @extend %text-color;
+                                    @include font-size(18px);
+                                }
+                            }
+                            .textinner{
+                                @extend %mt-0;
+                                span{
+                                    @include font-size(16px);
+                                    @extend %text-500, %mt-0, %d-inline-block,%manrope;
+                                    color: #555;
+                                }
+                                h6{
+                                    @extend %mb-0, %title-color;
+                                    @include font-size(18px);
+                                }
+                            }
+
+                        }
+                    }
+                }
+           } 
+        }
+    } 
+    &__top {
+        img {
+            @extend %w-100;            
+        }
+        .text {
+            h4 {
+                @extend %title-color,
+                %font,
+                %text-600;
+                @include font-size(28px);
+                @include margin(30px 0 10px 0);
+            }
+
+            p { 
+                @extend %mb-25;
+                &:last-child {
+                    @extend %mb-0;
+                }
+            }
+        }
+    }
+
+    &__middle {
+        @include margin-top(60px);
+        .midddleinner {
+            img{
+                @extend %w-100;
+            }
+        }
+        .text {
+            h4 {
+                @extend %text-600,
+                %font,
+                %title-color,
+                %text-capitalize;
+                @include font-size(28px);
+                @include margin(30px 0 10px 0);
+            }
+
+            p { 
+                @extend %mb-15;
+                &:last-child {
+                    @extend %mb-0;
+                }
+            }
+        }
+    }    
+}

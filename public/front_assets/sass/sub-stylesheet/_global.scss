@@ -1,0 +1,821 @@
+// Container
+@include breakpoint(xl) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1344px !important;
+    }
+}
+
+// all section header here
+.section__header {          
+    span{
+        @extend %manrope, %text-color, %text-600, %text-capitalize, %mb-5;
+        img{
+            @extend %ml-5;                
+        }
+    }
+    h3{        
+        @extend %text-capitalize, %mb-5;
+    }    
+    &--header2{
+        @extend %text-center;
+        p{
+            max-width: 585px;
+            @extend %auto;
+        }
+    }
+}
+
+// all section padding here
+.padding-block {
+ @include padding-block(120px);
+}
+
+// preload start here
+.preloader {
+    @extend %left-0, %top-0, %w-100, %h-100, %bg-no-repeat;
+    position: fixed;
+    z-index: 9999999;
+    background-color: #ffffff;
+    background-position: center center;    
+    background-image: url("..//..//img/logo/preloader.gif");
+}
+ 
+// pagination style here
+.swiper-button-next,
+.swiper-button-prev {
+    &:after {
+        @include font-size(22px);
+        @extend %text-900;        
+        @include padding(18px 23px);
+        @extend %white-color;
+        @include transition(0.5s ease-in-out);
+        @include border-radius(50px);
+    }    
+}
+// error start here
+.fourzero{    
+    @include padding(130px 0 200px 0);
+    @include breakpoint(sm){
+     @include padding(130px 0 0 0);
+    }
+    &__content{
+        @include margin-top(40px);
+       p{
+        max-width: 688px;
+        @extend %auto, %mt-20;
+       } 
+       form{
+        @include margin(25px auto);
+        @extend %p-rel;
+        max-width: 380px;
+        input{
+            @extend %bg-theme, %border-radius-4;
+            @include padding(12px);
+        }
+        i{
+            @extend %abs, %top-50, %text-color;
+            right: 20px;
+            transform: translateY(-50%);  
+        }
+       }       
+    }
+}
+
+// bottom scrollbar start here
+
+.scrollToTop {
+    @extend %wd-40, %hd-40, %line-height-40, %text-center;
+    position: fixed;
+    bottom: -30%;
+    right: 5%;
+    z-index: 9;          
+    background: linear-gradient(99deg, $theme 25.27%, $theme 96.39%);  
+   
+    @include border-radius(50%);
+    font-size: 24px;
+    animation: lab_top_up 5s linear infinite;
+    @include transition($transition);
+    z-index: 999999;
+  
+    i {
+      color: $white-color;
+      @extend %rel, %font-14;
+      z-index: 1;
+    }
+}
+  
+@keyframes lab_top_up {
+    0% {
+      transform: translateY(-15px);
+    }
+  
+    50% {
+      transform: translateY(0px);
+    }
+  
+    100% {
+      transform: translateY(-15px);
+    }
+}
+  
+  .pluse_1,
+  .pluse_2 {
+    @extend %abs, %w-100, %h-100, %left-50, %top-50;
+    @include border-radius(50%);     
+    
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: rgba($theme, $alpha: 0.1);
+  
+    &::after,
+    &::before {
+      @extend %abs;
+      background: $theme;
+      border-radius: 50%;      
+      @extend %left-50, %top-50;
+      margin-left: -20px;
+      margin-top: -20px;
+      z-index: 0;
+    }
+  
+    &::after {      
+      @extend %wd-30, %hd-30, %bgtransprant;      
+      margin-left: -15px;
+      margin-top: -15px;
+    }
+  
+    &:before {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  .pluse_1 {
+    -webkit-animation: pluse_animate 3s infinite linear;
+    animation: pluse_animate 3s infinite linear;
+  }
+  
+  .pluse_2 {
+    &::before {
+      -webkit-animation: pluse_animate 3s infinite linear;
+      animation: pluse_animate 3s infinite linear;
+      -webkit-animation-delay: 1s;
+      animation-delay: 1s;
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+  
+  @keyframes pluse_animate {
+    0% {
+      opacity: 1;
+      -webkit-transform: translate(-50%, -50%) scale(0.3);
+      transform: translate(-50%, -50%) scale(0.3);
+    }
+  
+    100% {
+      opacity: 0;
+      -webkit-transform: translate(-50%, -50%) scale(2);
+      transform: translate(-50%, -50%) scale(2);
+    }
+  }  
+
+@include breakpoint(xl){
+    .fadeInDown {
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;    
+    }
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          -webkit-transform: translateY(-20px);
+          -ms-transform: translateY(-20px);
+          transform: translateY(-20px);
+        }
+      
+        100% {
+          opacity: 1;
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+        }
+    }
+}
+
+.go-up{
+    @extend %p-rel;
+    z-index: 999;
+}
+.overly{    
+    @extend %p-rel;
+    &::after{
+        @extend %abs, %top-0, %left-0, %w-100, %h-100;
+        background: rgba(0,0,0,.8);
+        z-index: 1;
+    }
+}
+
+.plybtn{     
+    a {
+        @extend %wd-70,%hd-70,%bgtheme, %d-inline-block,%text-center,%p-rel,%line-height-80;
+        @include border-radius(50px);
+        z-index: 10;
+        &:before {
+            @extend %abs,%w-100,%h-100,%bgtheme,%left-0,%top-0;
+            z-index: -10;
+            @include border-radius(50%);
+            opacity: 0.15;
+            animation: inner-ripple 2000ms linear infinite;
+
+            @include breakpoint(xl){
+                background: $white-color;
+            }            
+        }
+
+        @keyframes inner-ripple {
+            0% {
+                transform: scale(1);
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+            }
+            30% {
+                transform: scale(1);
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+            }
+            100% {
+                transform: scale(1.5);
+                filter: alpha(opacity=0);
+                opacity: 0;
+                -webkit-transform: scale(1.5);
+                -moz-transform: scale(1.5);
+                -ms-transform: scale(1.5);
+                -o-transform: scale(1.5);
+            }
+        }
+        i {
+            @extend %white-color;
+            font-size: 30px;
+        }
+        &:after {
+            @extend %abs,%w-100,%h-100,%bgtheme, %left-0,%top-0;
+            z-index: -10;
+            @include border-radius(50%);
+            opacity: 0.15;
+            animation: outer-ripple 2000ms linear infinite;
+
+            @include breakpoint(xl){
+                background: $white-color;
+            }            
+        }
+        @keyframes outer-ripple {
+            0% {
+                transform: scale(1);
+                filter: alpha(opacity=50);
+                opacity: 0.5;
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+                -webkit-filter: alpha(opacity=50);
+            }
+            80% {
+                transform: scale(1.5);
+                filter: alpha(opacity=0);
+                opacity: 0;
+                -webkit-transform: scale(1.5);
+                -moz-transform: scale(1.5);
+                -ms-transform: scale(1.5);
+                -o-transform: scale(1.5);
+            }
+            100% {
+                transform: scale(2.5);
+                filter: alpha(opacity=0);
+                opacity: 0;
+                -webkit-transform: scale(2.5);
+                -moz-transform: scale(2.5);
+                -ms-transform: scale(2.5);
+                -o-transform: scale(2.5);
+            }
+        }
+    }
+    &--playbtn{
+        a{
+            &:before{
+                background: $white-color;
+            }
+            &:after{
+                background: $white-color;
+            }
+        }
+    }
+}
+
+.partner {
+    @include padding-block(100px);
+    &__item{
+        @extend %text-center, %auto;
+        width: 120px;   
+        @include breakpoint(md){
+            width: 150px; 
+        }  
+    }   
+    &__inner{
+        @extend %text-center;
+        img{
+            @include breakpoint(max-md){
+                width: 100px;
+
+            }
+        }
+    }
+    &--paddingaboutpage{
+        @include padding(100px 0 200px 0 ); 
+        @include breakpoint(sm){
+            @include padding(100px 0 0 0 ); 
+        }
+    }
+}
+
+//newslatter 
+.newslatter {
+    padding: 130px 0;
+    @include breakpoint(esmm){
+        padding: 150px 0; 
+    }
+
+    @include breakpoint(sm){
+        padding: 180px 0;
+    }
+
+    &__form {
+        @extend %flex, %justify-center;  
+
+        @include breakpoint(max-sm){
+            @include padding(0 40px);
+        }    
+        form {
+            @extend %flex, %align-items-center;
+            max-width: 714px;
+
+            @include breakpoint(max-sm){
+                justify-content: center;                
+            }
+           
+            @include breakpoint(md){
+                width: 714px;
+            }
+            input { 
+
+                @extend %bg-theme,
+                %d-inline-block;
+                @include padding(14.5px 10px);
+                @extend %border-radius-4;
+
+                @include breakpoint(sm){
+                  width: calc(100% - 200px);  
+                  @include border-radius(4px 0 0 4px);   
+                  @include padding(14.5px 20px); 
+
+                }                              
+            }            
+            button { 
+                @extend %border-none;                
+                @extend %bgtheme, %text-uppercase, %white-color, %font-16,%text-600;                
+                @include padding(16px 20px);                
+                @extend %border-radius-4;
+
+                @include breakpoint(sm){                       
+                    @include border-radius(0 4px 4px 0); 
+                    width: 200px;
+                }
+
+                @include breakpoint(max-sm){
+                    margin-top: 15px;
+                }    
+            }
+        }
+    }   
+    .text{
+        h3{
+           @extend %text-center, %white-color, %mb-30;            
+           @include breakpoint(max-sm){
+            @include font-size(30px);
+           }
+        }
+    } 
+    &__bg{
+      background-image: url("..//..//img/home-1/newslatter/bg.jpg"); 
+      @include padding(80px 20px); 
+      @include breakpoint(sm){
+          @include padding(80px 0);
+       }
+      @extend %bg-no-repeat, %bg-cover, %abs,%left-50;
+      @include border-radius(5px);
+      transform: translateX(-50%);
+      width: 100%;
+      @include breakpoint(xxl){
+        width: 1320px;
+      }
+      bottom: -20%;           
+    }    
+    &--aboutpage{         
+         @include padding(250px 0);
+
+         @include breakpoint(esm){
+             @include padding(200px 0);
+         }
+
+         @include breakpoint(md){
+             @include padding(180px 0);
+         }
+         @include breakpoint(lg){
+            @include padding(165px 0);
+         }
+    }    
+}
+
+// page header
+.pageheader{ 
+    background-image: url("..//..//img/pageheader/bg.jpg");
+    @extend %bg-no-repeat, %bg-cover;  
+    @include padding(120px 0);   
+    @include breakpoint(xl){
+        @include padding(300px 0 80px 0);   
+    } 
+    &__content {
+        @extend %text-center;
+        h2{
+            @extend %white-color, %mp-0-im, %text-600;
+            font-style: normal;
+            @include font-size(36px);
+        }  
+        ul{
+            @extend %flex, %justify-center, %mt-5;
+            gap: 10px;
+            li{
+                @extend %text-600, %text-capitalize;
+                @include font-size(16px);
+                a{
+                   @extend %white-color, %text-none, %p-rel; 
+                   @include padding(5px 20px);
+                   &:after{
+                    @extend %abs, %bg-white;
+                    width: 2px;
+                    height: 20px;
+                    right: 4px;
+                    top: 7px;
+                    transform: rotate(25deg);                    
+                   }
+                }
+              &.active{
+                @extend %text-600, %text-color;
+              }
+              &:nth-child(2){
+                a{
+                    @include padding-left(5px);  
+                }
+
+              }
+            }
+        }      
+    }
+}
+
+// mistion vison start here
+
+.mission{
+   &__inner{
+    @include padding(10px);
+    border: 1px solid #F8F5F0;
+    @extend %border-radius-4;
+    .thumb{
+        @extend %border-radius-4, %hidden;
+        img{
+            @extend %w-100;
+        }        
+    }
+    .text{
+        @include padding(30px 10px);
+        @extend %text-center;
+        h6{
+            @extend %mb-15;
+        }        
+    }
+   } 
+}
+
+// discover our company
+.nav-pills {
+    @extend %flex, %justify-center;
+    gap: 15px;
+    @include breakpoint(lg){
+    gap: 30px;
+    }
+    .nav-link{
+        @extend %title-color, %border-radius-4;       
+        @extend %text-600, %text-capitalize;
+        @include font-size(15px);
+        padding: 10px 8px;
+        border: 1px solid #F8F5F0;
+
+        @include breakpoint(lg){
+            @include font-size(18px);
+            padding: 10px 20px;
+            @include font-size(18px);
+            padding: 15px 30px;
+        }    
+        &.active{       
+            @extend %bgtheme;
+        }
+    }
+}
+
+// discover our compnay
+.faqcontent{
+    @extend %p-rel;
+    &__wrapper{
+        @include margin-top(50px);        
+        @extend %hidden;      
+    }
+    &__innerimg{
+        @extend %w-100, %h-100;
+        img{
+            @extend %w-100, %h-100;
+        }
+    }
+    &__content{
+        border: 1px solid #F8F5F0;
+        @include padding(45px 30px);
+        @include breakpoint(xxl){
+        @include padding(38px 30px 38px 45px);
+        }
+        h4{
+           @extend %title-color;
+        }
+        p{
+            @extend %my-10;
+        }        
+        ul{
+            @extend %mp-0-im;
+            li{
+                @extend %text-400, %text-capitalize, %list-none;
+                @include line-height(30px);
+            }
+        }
+    }
+    &__btn{
+        @include margin-top(40px);   
+        a{           
+            @include padding(0 40px);
+        }   
+
+        
+    }
+    &__header{
+        @extend %text-center;
+        p{
+            max-width: 500px;
+            @extend %auto, %mt-10;
+        }
+        @include margin-bottom(50px);
+    }    
+}
+
+.sideallheading{
+    border-bottom: 1px solid #F2F6F9;
+    @extend %mb-20, %pb-20;
+}
+
+.pagi{    
+    @include margin-top(50px);
+   .pagi-inner{
+    @extend %flex, %justify-center;
+
+        ul{
+        @extend %flex;
+        gap:10px;
+            li{     
+                @extend %list-none;    
+                a{
+                    @extend %wd-50, %hd-50, %bg-theme, %d-inline-block, 
+                    %line-height-50, %text-color, %text-center, %text-600, %text-capitalize,%text-none; 
+
+                    @include border-radius(25px); 
+                    &.active{
+                        @extend  %white-color;
+                        @extend %bgtheme;
+                    }  
+                    &:hover{                
+                        @extend %white-color; 
+                        @extend %bgtheme;
+                    }
+                        
+                }
+                &:first-child{
+                    a{
+                        i{                    
+                            @extend %text-color;
+
+                        }
+                        &:hover{
+                            i{
+                                @extend %white-color;
+                            }
+                        }
+                    }
+                }
+                &:last-child{
+                    a{                
+                        i{
+                            @extend %text-color;
+
+                        }
+                        &:hover{
+                            i{
+                                @extend %white-color;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+   }
+}
+
+// img hover effect
+.imghover{
+    @extend %p-rel;
+    z-index: 2;
+    &::before{
+        @extend %abs, %top-0, %bottom-0, %left-50, %opacity-1;        
+        right: 51%;
+        background: rgba(255, 255, 255, 0.2);        
+        pointer-events: none;        
+    }
+    &::after{        
+        @extend %abs, %top-50, %right-0, %bottom-50, %left-0, %opacity-1;
+        background: rgba(255, 255, 255, 0.3);        
+        pointer-events: none;
+    }
+    &:hover{
+        &::before{            
+            @extend  %left-0, %right-0, %opacity-0;
+            -webkit-transition: all 900ms linear;
+            transition: all 900ms linear;              
+        }
+        &::after{            
+            @extend  %top-0, %bottom-0,%opacity-0;
+            -webkit-transition: all 900ms linear;
+            transition: all 900ms linear;
+        }
+    }
+}
+.left-right{
+    @extend %abs;
+    left: 1%;
+    top: 5%;
+    animation-name: left-right;
+    @extend %animation-duration;     
+}
+@keyframes left-right{
+    0%{              
+      left: 1%;
+    }
+    50%{
+      left: 2%;           
+    }
+    100%{
+     left: 1%; 
+    }
+} 
+
+.right-left{
+    @extend %abs;
+    right: 1%;
+    bottom: 0%; 
+    animation-name:bottomshapeteam;
+    @extend %animation-duration;
+}
+
+@keyframes bottomshapeteam{
+    0%{              
+       right: 0%;
+    }
+    50%{
+      right: 2%;           
+    }
+    100%{
+      right: 0%; 
+    }
+}  
+
+.top-bottom{
+    @extend %abs;
+    left: 0%;
+    top: 5%;
+    animation-name: top-bottom;
+     @extend %animation-duration;
+}
+@keyframes top-bottom{
+    0%{              
+        top: 0%;
+    }
+    50%{
+        top: 6%;          
+    }
+    100%{
+        top: 0%;
+    }
+}
+
+.bottom-top{
+    @extend %abs;
+    right: 0%;
+    bottom: 0%;
+    animation-name: bottom-top;
+    @extend %animation-duration;
+}
+@keyframes bottom-top{
+    0%{              
+        bottom: 0%;
+    }
+    50%{
+        bottom: 6%;          
+    }
+    100%{
+        bottom: 0%;
+    }
+}
+
+.right-top{
+    @extend %abs;
+    right:0%;
+    top: 0%;
+    animation-name: right-top;
+     @extend %animation-duration;
+}
+@keyframes right-top{
+    0%{              
+      right: 0%;
+    }
+    50%{
+      right: 3%;           
+    }
+    100%{
+     right: 0%;
+    }
+} 
+
+.bottom-left{
+    @extend %abs;
+    left:0%;
+    bottom: 0%;
+    animation-name: bottom-left;
+     @extend %animation-duration;
+}
+@keyframes bottom-left{
+    0%{              
+       bottom: 0%;
+    }
+    50%{
+       bottom: 2%;           
+    }
+    100%{
+       bottom: 0%;
+    }
+} 
+.dnone{
+    @extend %d-none-im;
+    @include breakpoint(xxxxxl){
+      display: inherit !important;
+    }    
+}
+
+// go top
+.go-top{
+    @include breakpoint(max-sm){
+        position: relative;
+        z-index: 999;
+    }
+}

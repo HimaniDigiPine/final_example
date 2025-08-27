@@ -1,0 +1,55 @@
+.feature{
+    &__inner{
+        @extend %text-center;
+        .icon{
+            @extend %wd-75, %hd-75,%line-height-75,%auto, %p-rel; 
+            @include margin-bottom(40px);
+            &::after{
+                @extend %abs,%top-0, %left-0, %w-100, %h-100;
+                border: 1.7px solid $theme;
+                border-style: dashed; 
+                @include border-radius(40px);
+            }  
+            img{
+                @extend %transition2;
+            }         
+        }
+        .text{
+            h6{
+                @extend %mb-10;
+            }
+            p{
+                @extend %public;
+                font-weight: 300;
+            }
+        }
+        &:hover{
+
+            .text{
+                h6{
+                    @extend %text-color;
+                }
+            }
+            .icon{                
+                &::after{    
+                    border: 1.9px solid $theme; 
+                    border-style: dashed;                
+                    
+                }   
+                @extend %iconanimation;    
+                img{
+                    transform: rotateY(180deg);
+                }        
+            }
+        }
+        &--innerpage3{
+            @include padding(40px 25px);
+            border: 1px solid #F8F5F0;
+            @include border-radius(8px);
+            &:hover{
+               box-shadow: 0px 0px 15px 0px rgba(179, 181, 191, 0.6);
+            }
+        }
+    }
+}
+

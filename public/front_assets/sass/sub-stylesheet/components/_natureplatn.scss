@@ -1,0 +1,237 @@
+.natureplant{  
+    background-image: url("..//..//..//img/home-1/welcome/bg.png");
+    @extend %p-rel, %bg-no-repeat;
+    @include padding(90px 0px 80px 0px); 
+    &__content{
+        @include margin-top(20px);        
+        p{
+            max-width: 700px;
+            @include breakpoint(xxxl){
+                max-width: 550px;
+            }
+            @extend %mb-30;
+        }
+        ul{
+            @extend %mp-0-im, %flex;
+            gap: 15px 0;    
+            @include breakpoint(max-md){
+                flex-direction:column;
+            }
+            @include breakpoint(md){
+                align-items: center;
+            }
+            li{
+                @extend %list-none;
+                @include breakpoint(md){
+                    width: 40%;
+                }
+                i{
+                    @extend %text-color, %mr-10;
+                }
+            }
+        }
+        a{
+            @extend %d-inline-block;
+            @include margin-top(40px);
+        }
+        &--contentpage2{
+            ul{
+                flex-direction: column;
+                li{
+                    @extend %w-100-im, %text-2;
+                }
+            }
+        }        
+    }
+    &__gardingmake{
+        @include margin-top(40px);
+        @extend %flex;
+        @include breakpoint(md){
+            align-items: center;
+        }
+        gap: 30px;
+        @include breakpoint(max-md){
+            flex-direction: column;
+        }
+        .item{
+            @extend %flex, %align-items-center;
+            gap: 20px;
+            .thumb{
+                @extend %wd-70, %hd-70,%line-height-70, %text-center,%p-rel;
+                &::after{
+                    @extend %abs,%top-0, %left-0, %w-100, %h-100;
+                    border: 1.7px solid $theme;
+                    border-style: dashed; 
+                    @include border-radius(40px);
+                }            
+            }
+            .text{  
+                span {
+                    @extend %text-color,
+                    %mb-0,
+                    %text-600;
+                    @include font-size(24px);             
+                }
+                h6{
+                    @include margin-top(2px);
+                }
+            }
+            &:hover{
+                .thumb{
+                 @extend %iconanimation;
+                }
+            }
+        }
+    }    
+    &--natureplantpage2{        
+     @extend %bg-white-im;
+     @include padding(120px 0);  
+       
+    }
+    &__innerimg{
+        @extend %p-rel;           
+        .counteritem{      
+            @extend %opacity-0; 
+            @extend %abs, %flex, %align-items-center;            
+            @extend %border-radius-4, %bg-white, %transition2;      
+            @include breakpoint(sm){
+                top: 30px;
+                left: 50%;
+                opacity: 1;
+                gap: 20px;
+                width: 260px;
+                height: 85px;
+                transform: translateX(50%);
+                z-index: 1;            
+                box-shadow: 0px 0px 10px 0px rgba(179, 181, 191, 0.5);
+            }                       
+            @include padding(0 20px);                 
+            &.counteritem2{            
+                top: 50% !important;                
+                left: 15% !important;
+                transform: translateX(15%);
+                @include breakpoint(sm){
+                    top: 80% !important;                
+                    left: 50% !important;
+                } 
+                @include breakpoint(lg){
+                    left: 55% !important;
+                }
+                @include breakpoint(xxl){
+                    left: 60% !important;               
+                }
+            }
+            .thumb{                
+                @extend %wd-50, %hd-50,%line-height-50, %text-center,%p-rel;
+                &::after{
+                    @extend %abs,%top-0, %left-0, %w-100, %h-100;
+                    border: 1.7px solid $theme;
+                    border-style: dashed; 
+                    @include border-radius(40px);
+                }
+            }
+            .text{
+                h5{
+                    span{
+                        @include font-size(24px);
+                        @extend %text-600, %text-color;                    
+                    }
+                }
+                h6{
+                    @extend %text-500;
+                }
+            }
+            @include breakpoint(sm){
+                animation: mymove 9s infinite; 
+            }           
+        }    
+        @keyframes mymove {
+            0%{
+                left: 0px;
+            }
+            50%{
+                left:30px;
+            } 
+            100%{
+                left:0px;
+            } 
+
+        }
+        &:hover{
+            .thumb{
+             @extend %iconanimation;
+            }
+        }         
+        &--inneraboutpage{            
+            .counteritem{                
+                &.counteritem3{
+                    top: 70%;
+                    left: -10% !important;
+                    @include breakpoint(sm){
+                        left: 30% !important;
+                    }
+                    @include breakpoint(xxl){
+                        left: 38% !important;
+                    }                    
+                    
+                }
+            }
+        }
+    }
+    &--natureplantpage3{   
+        @include padding-top(0);   
+        .samepositon{
+            @extend %abs;
+            &.bottomright{
+                @extend %right-0, %bottom-0;
+            }
+            &.topright{
+                @extend %right-0, %top-0;
+            }
+        }     
+        .row{
+            @include breakpoint(max-xl){
+                flex-direction: column-reverse;
+            }
+        }   
+    }
+    &--aboutpage{
+        background: $bg;
+        @include padding(120px 0);
+        &::before,
+        &::after{
+            @extend %bgtransprant-im;
+        }
+    }
+    &__aboutinner{
+        @include breakpoint(xxl){
+            @include margin-left(50px);
+        }
+        @include breakpoint(max-xl){
+            @include margin-bottom(50px);
+        }
+    }    
+    .position{
+        @extend %abs;
+        &.leftimg{
+            @extend  %bottom-0, %left-0;
+            img{
+                width: 60%;
+                @include breakpoint(xxxxl){
+                width: 80%;
+                }
+                @include breakpoint(xxxxxl){
+                    width: 90%;  
+                }
+            }
+        }        
+        &.topshape{         
+            top: 5%;
+            right: 2%; 
+        }
+        &.middleshape{
+            top: 8%;
+            left: 37%;
+        }              
+    }    
+}

@@ -1,0 +1,48 @@
+.custom-btn {
+  $btn-lh: 60px;
+  $btn-lh-sm: 56px;
+  @extend %d-inline-block,%p-rel,%text-600,%text-capitalize,%of-hidden, %text-none;
+  @include add-prefix(transition, $transition);    
+  @extend %bgtheme, %white-color; 
+  padding-inline: 2rem;  
+  line-height: calc($btn-lh - 5px);
+  z-index: 1;
+  @include border-radius(4px);
+
+  &:before,
+  &:after {
+    @extend %p-abs, %top-0, %bottom-0, %left-0, %right-0;
+    @include add-prefix(transition, $transition);    
+    z-index: -1;
+  }
+
+  &:before {
+    right: calc(-#{$btn-lh} - 5px);
+    border-right: calc(#{$btn-lh} + 5px) solid transparent;
+    border-bottom: calc(#{$btn-lh} + 5px) solid $secondary-color;
+    transform: translateX(-100%);
+  }
+  
+  &:after {
+    left: calc(-#{$btn-lh} - 5px);
+    border-left: calc(#{$btn-lh} + 5px) solid transparent;
+    border-top: calc(#{$btn-lh} + 5px) solid $secondary-color;
+    transform: translateX(100%);
+  }
+
+  &:hover {
+    color: $white-color;
+    border-color: $secondary-color;   
+    &:before {
+      transform: translateX(-49%);
+      
+    }
+
+    &:after {
+      transform: translateX(49%);
+      
+    }
+
+  }
+  
+}

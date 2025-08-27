@@ -1,0 +1,105 @@
+.request{    
+    @include padding(100px 0);
+    @extend %p-rel;
+    &::after{
+        @include breakpoint(lg){
+            background-image: url("..//..//..//img/home-3/request/img.jpg");
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;            
+            height: 100%;
+            background-position: center;
+            width: 40%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }    
+     }
+
+     &__form { 
+        @include margin-top(40px);   
+        position: relative;
+        z-index: 1;    
+        form {
+            position: relative;
+            z-index: 99;
+            .allinput {
+                @extend %flex;
+                gap:20px;
+                @include breakpoint(xxl){
+                 gap:25px;                    
+                }
+                input {
+                    @include padding(15px 30px);
+                    @extend %bg-white, %border-radius-4;
+                    &:nth-child(1){                       
+                        width: 100%;  
+                        @include breakpoint(xl){
+                            width: 48.3%;  
+                        }                       
+                    }
+                    &:nth-child(2){
+                        width: 100%;                          
+                        @include breakpoint(xl){
+                            width: 48.3%;  
+                        } 
+                    }                
+                }
+                ::placeholder{
+                    @extend  %text-400, %title-color;
+                }
+
+            }
+            textarea{
+                @extend %bg-white, %border-radius-4;
+                @include margin-top(20px);
+                @include padding(15px 30px);            
+            }
+            button{
+                @include margin-top(50px);
+                @extend %border-none;
+                @include padding(0px 27px);
+            }
+        }  
+        p {
+            &.error {
+                color: red;
+            }
+            &.success{
+                color: green; 
+            }
+        }
+        &--contactpage{
+            form{
+                @extend %text-center;
+                button{
+                    @include padding(0px 50px);
+                }
+            }
+            p{
+                @extend %text-center, %mt-20;
+            }
+        }      
+    }  
+    &__header{
+        p{
+            @extend %mt-5;
+        }
+        &--headercontactpage{
+            @extend %text-center;
+        }
+    } 
+    &--historypage{        
+        &::after{
+            @include breakpoint(md){
+                left: 60%;
+            }
+        
+         }
+    }
+    &--contactus{        
+        &::after{
+            @extend %bgtransprant-im; 
+        }
+    }
+}

@@ -1,0 +1,288 @@
+.project{   
+    background: url("..//..//..//img/home-1/project/bg.jpg"); 
+    @extend %bg-cover, %bg-no-repeat; 
+    background-position: center;    
+    &__item {
+        @extend %p-rel,        
+        %hidden;
+        &:after {
+            @extend %abs,
+            %top-0,
+            %left-0,
+            %w-100,
+            %h-100,            
+            %transition2,
+            %hidden;
+            background: rgba(0,0,0,.6);
+            transform: scale(0);
+        }
+        .content {
+            @extend %abs,%w-100,
+            %left-50,            
+            %transition2,
+            %opacity-1,            
+            %top-50,
+            %hidden;                       
+            transform: translate(-50%,-50%) scale(0);
+            .content-inner {    
+                @extend %text-center;            
+                p {
+                    @extend %white-color, %text-600;    
+                    margin-bottom: 2px;                    
+                }
+                h6 a {
+                    @extend %white-color, %text-none,                        
+                    %text-600,
+                    %text-capitalize; 
+                }              
+            }
+        }
+        .thum {
+            @extend %border-radius-4;
+            img {
+                @extend %w-100;
+            }
+        }
+        &:hover {
+            &:after {
+                @extend %h-100;
+                transform: scale(1.1);
+            }
+            .content {
+                @extend %opacity-1,
+                %visi-visiable;
+                transform: translate(-50%,-50%) scale(1.1);
+                .content-inner{                    
+                    h6{
+                        a{
+                            @extend %text-color;
+                        }
+                    }
+                }
+            }
+        }        
+    }
+    &__wrapper{
+        @include margin-top(65px);
+    }
+    &__btn{
+        @extend %text-center;
+        @include margin-top(60px);
+       a{
+        @extend %d-inline-block;
+        padding-inline: 2.5rem;  
+       } 
+    }
+    &--projectpage3{
+        @extend %bg-white-im;    
+    }    
+    &--projectdetails{
+       background: $bg; 
+       @include padding(120px 0 200px 0);
+       @include breakpoint(sm){
+        @include padding(120px 0);
+       }
+    }
+}
+
+
+.projectfilter{
+    @extend %p-rel;
+    &__header {
+      @include margin-bottom(70px);
+      ul {
+        @extend %flex,
+        %justify-center,
+        %align-items-center, %mp-0-im;
+        gap: 20px;
+        li {
+            border: 1px solid #69696926;
+            @include padding(11px 30px);
+            @extend %text-600,
+            %black-color,
+            %pointer, %text-capitalize, %list-none, %border-radius-4;
+            @include font-size(16px);
+            &.active {
+                @extend %bgtheme,
+                %white-color;
+                border: 1px solid $theme;
+            }
+        }
+      }  
+    }
+    &__item{
+        @extend %p-rel, %border-radius-4, %hidden;
+        a {
+        @extend %w-100-im, %h-100;
+        img {
+            @extend %w-100-im;
+        }
+        }
+        .inneritem {                
+            @extend %abs, %top-50, %left-50, %flex, %align-items-center;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            @include transition(0.3s ease-in-out);
+            .upitem {
+                @extend %d-none;
+                @include breakpoint(sm){
+                display: inherit;
+                }
+                &:nth-child(1) {
+                    margin-right: 10px;
+                    @include transform(translate(51px));
+                    @include transition(0.3s ease-in-out);
+                }
+                &:nth-child(2) {
+                    @include transform(translate(-51px));
+                    @include transition(0.3s ease-in-out);
+                }
+                a {              
+                    @extend %bg-white, %text-center, %d-inline-block, %wd-40-im, %hd-40;
+                    line-height: 40px;
+                    @include border-radius(20px);
+                    @include transition(0.3s ease-in-out);
+                    i {
+                        @extend %text-color, %font-14;
+                        @include transition(0.3s ease-in-out);
+                    }
+                &:hover {
+                    @extend %bgtheme-im;
+                    @include transition(0.3s ease-in-out);
+                    i {
+                    @extend %white-color;
+                    @include transition(0.3s ease-in-out);
+                    }
+                }
+
+                }
+            }        
+        }
+        &::after {
+        @extend %abs, %top-0, %left-0, %w-100, %h-100;
+        background: none;
+        @include breakpoint(sm){
+            background: rgba(0, 0, 0, 0.8);
+        }
+        @extend %opacity-0;          
+        @include transition(0.3s ease-in-out);
+        }
+        &:hover {
+            &::after {
+                @extend %opacity-1;
+                @include transition(0.3s ease-in-out);
+            }
+            .inneritem {
+                @extend %opacity-1;
+                .upitem {
+                &:nth-child(1) {
+                    @include transform(translate(0px));
+                    @include transition(0.3s ease-in-out);
+                }
+                &:nth-child(2) {
+                    @include transform(translate(0px));
+                    @include transition(0.3s ease-in-out);
+                }
+                }
+            }
+        }
+        &--itemproject{
+            @extend %h-100;            
+            @extend %hidden;
+        }
+    }
+    &__btn{
+        @extend %text-center;
+        @include margin-top(80px);
+        a{
+        @extend  %text-center, %d-inline-block; 
+        padding:0rem 3.5rem; 
+        }
+
+    }
+    &--bgsimilarproduct{
+    background: #fafafa;
+    }  
+    .section__header{
+        @include margin-bottom(50px);
+    }  
+    &--bgnone{
+        background: #fff !important;
+        @include padding(120px 0 200px 0);
+        @include breakpoint(sm){
+            @include padding(120px 0 0 0); 
+        }
+    }  
+    .leftshape{
+        @extend %d-none-im;
+        @include breakpoint(xxxl){
+            display: inherit !important;
+        }
+    }
+}
+
+
+.portfoliosingle {   
+    &__thumb{
+        @extend %border-radius-4, %hidden; 
+        img{
+            @extend %w-100;
+        }  
+     }
+    &__left {
+        .item{
+            p{
+                @extend %mt-20;
+            }
+           &:last-child{
+            @include margin-top(40px);
+           } 
+        }
+    }
+    &__right {           
+        border: 1px solid #F2F6F9;
+        h4 {                 
+            @extend  %mb-10;       
+            @include padding(20px 40px 20px 40px);                        
+            border-bottom: 1px solid #F2F6F9; 
+
+        }
+        ul {
+            @extend %flex, %align-items-center, %mp-0-im;   
+            @include breakpoint(sm){
+             justify-content: space-between
+            } 
+            li {                         
+                @extend %text-left, %w-100, %mb-10, %pb-10, %list-none;
+                border-bottom: 1px solid #F2F6F9;  
+                @include padding-inline(20px);
+                @include breakpoint(esmm){
+                    width: 50%;
+                    @include margin-bottom(20px);
+                    @include padding-bottom(20px);
+                }               
+                span {
+                    @extend  %text-500, %text-color;
+                    @include line-height(30px);
+                }
+                p {
+                    @extend  %title-color, %mb-0, %text-500;
+                }
+
+                &:nth-child(even){
+                    @include padding-left(20px);
+                }
+                &:nth-child(5){
+                    @include breakpoint(esmm){
+                        border-bottom: none !important; 
+                    }                       
+                   
+                }
+                &:nth-child(6){
+                    border-bottom: none !important;                    
+                }
+            }
+        }
+    }        
+}
+

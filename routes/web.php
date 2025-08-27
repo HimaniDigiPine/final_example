@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\http\Controllers\Admin\ProductCategoryController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.home');
 });
 
 Auth::routes();
