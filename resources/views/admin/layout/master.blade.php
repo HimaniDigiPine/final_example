@@ -246,6 +246,7 @@
 
         <!--plugins-->
         <script src="{{ asset('admin_assets/js/jquery.min.js')}}"></script>
+        
 
         <!--plugins-->
         <script src="{{ asset('admin_assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
@@ -270,6 +271,8 @@
 
         <!-- Sweet Alret -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
 
         @stack('scripts')
         
