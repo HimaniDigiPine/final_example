@@ -56,6 +56,23 @@
                     </li>
                 </ul>
             </li>-->
+            <!-- Banner Menu Start -->
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="material-icons-outlined">photo</i>
+                    </div>
+                    <div class="menu-title">Banners</div>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{ route('admin.banners.index') }}">
+                            <i class="material-icons-outlined">image</i>
+                            Banners
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Banner Menu End -->
             <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>

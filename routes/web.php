@@ -10,14 +10,14 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProductController;
 use App\http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Front\FrontHomeController;
 
-Route::get('/', function () {
-    return view('front.home');
-});
+
+//Main Route for Index Page
+Route::get('/', [FrontHomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -97,17 +97,28 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function (){
     // Restore and Force Delete for Products
     Route::post('products/restore/{id}', [ProductController::class, 'restore'])
         ->name('products.restore');
-
     Route::delete('products/force-delete/{id}', [ProductController::class, 'forceDelete'])
         ->name('products.forceDelete');
-
     // Bulk soft delete for Products
     Route::delete('products/bulkdelete', [ProductController::class, 'bulkDelete'])
         ->name('products.bulkDelete');
-
     // extra route for deleting gallery images
     Route::delete('products/gallery/{id}', [ProductController::class, 'deleteGallery'])
         ->name('products.gallery.delete');
+});
+
+// Admin Porduct Routes
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function (){
+    // Resource CRUD routes
+    Route::resource('banners', BannerController::class);
+    // Restore and Force Delete for Products
+    Route::post('banners/restore/{id}', [BannerController::class, 'restore'])
+        ->name('banners.restore');
+    Route::delete('banners/force-delete/{id}', [BannerController::class, 'forceDelete'])
+        ->name('banners.forceDelete');
+    // Bulk soft delete for Products
+    Route::delete('banners/bulkdelete', [BannerController::class, 'bulkDelete'])
+        ->name('banners.bulkDelete');
 });
 
 
